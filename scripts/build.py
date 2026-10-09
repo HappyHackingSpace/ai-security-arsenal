@@ -47,8 +47,10 @@ def short(desc, n=100):
     return desc if len(desc) <= n else desc[:n].rsplit(" ", 1)[0].rstrip(",.;:") + "…"
 
 
-def stars(n):
-    return f"{n / 1000:.1f}k".replace(".0k", "k") if n >= 1000 else str(n)
+def badges(repo):
+    gh, sh = f"https://github.com/{repo}", "https://img.shields.io/github"
+    return (f"[![Stars]({sh}/stars/{repo}?style=flat&label=%E2%98%85)]({gh}/stargazers) | "
+            f"[![Last commit]({sh}/last-commit/{repo}?style=flat&label=)]({gh}/commits)")
 
 
 def shield(label, msg, color, link):
@@ -117,13 +119,12 @@ def main():
             out += [f"## {groups.pop(0)}", ""]
         out += [f"### {c['title']}", "", c["blurb"], "", f"<sub>OWASP: {owasp(c)}</sub>", "",
                 "| Project | Description | Stars | Last commit |",
-                "| --- | --- | --: | --- |"]
+                "| --- | --- | --- | --- |"]
         for r, m in sorted(rows.get(c["key"], []), key=lambda x: x[1]["last_commit"], reverse=True):
             name = r["name"] or m["full_name"].split("/")[1]
             arch = " 🗄️" if m["archived"] else ""
             out.append(f"| [**{name}**](https://github.com/{m['full_name']}){arch} | "
-                       f"{short(r['note'] or m['description'])} | ⭐&nbsp;{stars(m['stargazers_count'])} | "
-                       f"{m['last_commit'][:10]} |")
+                       f"{short(r['note'] or m['description'])} | {badges(m['full_name'])} |")
         out += ["", '<div align="right"><a href="#contents">↑ back to contents</a></div>', ""]
 
     out += ["## Contribute", "", f"Suggest a tool with the [Add a tool]({ISSUE}) issue form, or open a PR: "
