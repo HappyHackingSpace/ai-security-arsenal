@@ -5,38 +5,18 @@
   <img alt="AI Security Arsenal: open source tools to attack, defend and hack with AI" src="assets/banner-light.svg" width="100%">
 </picture>
 
-[![tools](https://img.shields.io/badge/tools-362-blue)](#contents) [![categories](https://img.shields.io/badge/categories-14-blue)](TEMPLATE.md#categories-fixed) [![updated](https://img.shields.io/badge/updated-2026--10--09-green)](../../commits/main) [![suggest](https://img.shields.io/badge/suggest-a%20tool-orange)](https://github.com/omarkurt/ai-security-arsenal/issues/new?template=add-tool.yml)
+[![tools](https://img.shields.io/badge/tools-362-blue)](#attack-ai) [![categories](https://img.shields.io/badge/categories-14-blue)](TEMPLATE.md#categories-fixed) [![updated](https://img.shields.io/badge/updated-2026--10--09-green)](../../commits/main) [![suggest](https://img.shields.io/badge/suggest-a%20tool-orange)](https://github.com/omarkurt/ai-security-arsenal/issues/new?template=add-tool.yml)
 
 [Attack AI](#attack-ai) · [Defend AI](#defend-ai) · [Hack with AI](#hack-with-ai) · [Practice & Measure](#practice--measure)
 
 </div>
 
-## Contents
-
-| Group | Category | Tools |
-| --- | --- | --: |
-| Attack AI | [LLM Red Teaming & Scanners](#llm-red-teaming--scanners) | 37 |
-|  | [Agent & MCP Security Testing](#agent--mcp-security-testing) | 18 |
-|  | [Adversarial ML](#adversarial-ml) | 6 |
-|  | [Jailbreak & Injection Payloads](#jailbreak--injection-payloads) | 14 |
-|  | [AI Asset Discovery](#ai-asset-discovery) | 4 |
-| Defend AI | [Guardrails & AI Firewalls](#guardrails--ai-firewalls) | 24 |
-|  | [Agent & MCP Runtime Security](#agent--mcp-runtime-security) | 15 |
-|  | [Model & Supply-Chain Security](#model--supply-chain-security) | 6 |
-| Hack with AI | [AI Pentest Agents](#ai-pentest-agents) | 63 |
-|  | [AI Code Auditing](#ai-code-auditing) | 42 |
-|  | [AI Reverse Engineering](#ai-reverse-engineering) | 21 |
-|  | [Security Skills for Coding Agents](#security-skills-for-coding-agents) | 50 |
-| Practice & Measure | [Vulnerable AI Labs](#vulnerable-ai-labs) | 16 |
-|  | [Benchmarks & Datasets](#benchmarks--datasets) | 46 |
-
 ## Attack AI
 
 ### LLM Red Teaming & Scanners
 
-Probe LLMs and LLM apps for jailbreaks, prompt injection, data leakage and unsafe output.
-
-<sub>OWASP: stage *Test & Evaluate* · landscape *Red Teaming* · risks LLM01, LLM02, LLM05, LLM07, LLM10</sub>
+> Probe LLMs and LLM apps for jailbreaks, prompt injection, data leakage and unsafe output.  
+> **37 tools** · OWASP: stage *Test & Evaluate* · landscape *Red Teaming* · risks LLM01, LLM02, LLM05, LLM07, LLM10
 
 | Project | Description | Stars | Last commit |
 | --- | --- | --- | --- |
@@ -78,13 +58,12 @@ Probe LLMs and LLM apps for jailbreaks, prompt injection, data leakage and unsaf
 | [**CEREBRO-RED v2**](https://github.com/Leviticus-Triage/cerebro-red-v2) | CEREBRO-RED v2: Advanced LLM Red Team Research Platform with PAIR Algorithm and LLM-as-a-Judge… | [![Stars](https://img.shields.io/github/stars/Leviticus-Triage/cerebro-red-v2?style=flat&label=%E2%98%85)](https://github.com/Leviticus-Triage/cerebro-red-v2/stargazers) | [![Last commit](https://img.shields.io/github/last-commit/Leviticus-Triage/cerebro-red-v2?style=flat&label=)](https://github.com/Leviticus-Triage/cerebro-red-v2/commits) |
 | [**injectlab**](https://github.com/ahow2004/injectlab) | An open-source ATT&CK-style framework and test suite for adversarial LLM security research | [![Stars](https://img.shields.io/github/stars/ahow2004/injectlab?style=flat&label=%E2%98%85)](https://github.com/ahow2004/injectlab/stargazers) | [![Last commit](https://img.shields.io/github/last-commit/ahow2004/injectlab?style=flat&label=)](https://github.com/ahow2004/injectlab/commits) |
 
-<div align="right"><a href="#contents">↑ back to contents</a></div>
+<div align="right"><a href="#top">↑ back to top</a></div>
 
 ### Agent & MCP Security Testing
 
-Scan, audit and pentest AI agents, MCP / A2A servers, agent skills and agent configs.
-
-<sub>OWASP: stage *Test & Evaluate* · landscape *Agentic* · risks ASI01, ASI02, ASI03, ASI04, ASI05</sub>
+> Scan, audit and pentest AI agents, MCP / A2A servers, agent skills and agent configs.  
+> **18 tools** · OWASP: stage *Test & Evaluate* · landscape *Agentic* · risks ASI01, ASI02, ASI03, ASI04, ASI05
 
 | Project | Description | Stars | Last commit |
 | --- | --- | --- | --- |
@@ -107,13 +86,12 @@ Scan, audit and pentest AI agents, MCP / A2A servers, agent skills and agent con
 | [**MCPwned**](https://github.com/FenriskSecurity/MCPwned) | MCPwned is a companion extension that enables pentesters to effectively test MCP servers. It… | [![Stars](https://img.shields.io/github/stars/FenriskSecurity/MCPwned?style=flat&label=%E2%98%85)](https://github.com/FenriskSecurity/MCPwned/stargazers) | [![Last commit](https://img.shields.io/github/last-commit/FenriskSecurity/MCPwned?style=flat&label=)](https://github.com/FenriskSecurity/MCPwned/commits) |
 | [**skillguard**](https://github.com/LLMSecurity/skillguard) | Agent Skill Security Auditor — Audit agent skills against OWASP Agentic Top 10 & MITRE ATLAS before… | [![Stars](https://img.shields.io/github/stars/LLMSecurity/skillguard?style=flat&label=%E2%98%85)](https://github.com/LLMSecurity/skillguard/stargazers) | [![Last commit](https://img.shields.io/github/last-commit/LLMSecurity/skillguard?style=flat&label=)](https://github.com/LLMSecurity/skillguard/commits) |
 
-<div align="right"><a href="#contents">↑ back to contents</a></div>
+<div align="right"><a href="#top">↑ back to top</a></div>
 
 ### Adversarial ML
 
-Craft adversarial examples and measure model robustness.
-
-<sub>OWASP: stage *Test & Evaluate* · landscape *GenAI LLM* · risks LLM04</sub>
+> Craft adversarial examples and measure model robustness.  
+> **6 tools** · OWASP: stage *Test & Evaluate* · landscape *GenAI LLM* · risks LLM04
 
 | Project | Description | Stars | Last commit |
 | --- | --- | --- | --- |
@@ -124,13 +102,12 @@ Craft adversarial examples and measure model robustness.
 | [**AdvBox**](https://github.com/advboxes/AdvBox) | Advbox is a toolbox to generate adversarial examples that fool neural networks in… | [![Stars](https://img.shields.io/github/stars/advboxes/AdvBox?style=flat&label=%E2%98%85)](https://github.com/advboxes/AdvBox/stargazers) | [![Last commit](https://img.shields.io/github/last-commit/advboxes/AdvBox?style=flat&label=)](https://github.com/advboxes/AdvBox/commits) |
 | [**advertorch**](https://github.com/BorealisAI/advertorch) | A Toolbox for Adversarial Robustness Research | [![Stars](https://img.shields.io/github/stars/BorealisAI/advertorch?style=flat&label=%E2%98%85)](https://github.com/BorealisAI/advertorch/stargazers) | [![Last commit](https://img.shields.io/github/last-commit/BorealisAI/advertorch?style=flat&label=)](https://github.com/BorealisAI/advertorch/commits) |
 
-<div align="right"><a href="#contents">↑ back to contents</a></div>
+<div align="right"><a href="#top">↑ back to top</a></div>
 
 ### Jailbreak & Injection Payloads
 
-Payload collections, attack techniques and proof-of-concept code.
-
-<sub>OWASP: stage *Test & Evaluate* · landscape *Red Teaming* · risks LLM01, LLM07</sub>
+> Payload collections, attack techniques and proof-of-concept code.  
+> **14 tools** · OWASP: stage *Test & Evaluate* · landscape *Red Teaming* · risks LLM01, LLM07
 
 | Project | Description | Stars | Last commit |
 | --- | --- | --- | --- |
@@ -149,13 +126,12 @@ Payload collections, attack techniques and proof-of-concept code.
 | [**WideOpenAI**](https://github.com/grepstrength/WideOpenAI) | Short list of indirect prompt injection attacks for OpenAI-based models. | [![Stars](https://img.shields.io/github/stars/grepstrength/WideOpenAI?style=flat&label=%E2%98%85)](https://github.com/grepstrength/WideOpenAI/stargazers) | [![Last commit](https://img.shields.io/github/last-commit/grepstrength/WideOpenAI?style=flat&label=)](https://github.com/grepstrength/WideOpenAI/commits) |
 | [**Basic ML Prompt Injections**](https://github.com/Zierax/Basic-ML-prompt-injections) | llm attacks basic payloads | [![Stars](https://img.shields.io/github/stars/Zierax/Basic-ML-prompt-injections?style=flat&label=%E2%98%85)](https://github.com/Zierax/Basic-ML-prompt-injections/stargazers) | [![Last commit](https://img.shields.io/github/last-commit/Zierax/Basic-ML-prompt-injections?style=flat&label=)](https://github.com/Zierax/Basic-ML-prompt-injections/commits) |
 
-<div align="right"><a href="#contents">↑ back to contents</a></div>
+<div align="right"><a href="#top">↑ back to top</a></div>
 
 ### AI Asset Discovery
 
-Find and inventory exposed LLM services, inference servers, MCP endpoints and agents.
-
-<sub>OWASP: stage *Scope & Plan, Govern* · landscape *GenAI LLM, Agentic*</sub>
+> Find and inventory exposed LLM services, inference servers, MCP endpoints and agents.  
+> **4 tools** · OWASP: stage *Scope & Plan, Govern* · landscape *GenAI LLM, Agentic*
 
 | Project | Description | Stars | Last commit |
 | --- | --- | --- | --- |
@@ -164,15 +140,14 @@ Find and inventory exposed LLM services, inference servers, MCP endpoints and ag
 | [**Knostic MCP-Scanner**](https://github.com/knostic/MCP-Scanner) | Advanced Shodan-based scanner for discovering, verifying, and enumerating Model Context Protocol… | [![Stars](https://img.shields.io/github/stars/knostic/MCP-Scanner?style=flat&label=%E2%98%85)](https://github.com/knostic/MCP-Scanner/stargazers) | [![Last commit](https://img.shields.io/github/last-commit/knostic/MCP-Scanner?style=flat&label=)](https://github.com/knostic/MCP-Scanner/commits) |
 | [**Agent Discover Scanner**](https://github.com/Defend-AI-Tech-Inc/agent-discover-scanner) | The industry-standard Agentic Identity & Inventory Scanner. Automatically inventory autonomous… | [![Stars](https://img.shields.io/github/stars/Defend-AI-Tech-Inc/agent-discover-scanner?style=flat&label=%E2%98%85)](https://github.com/Defend-AI-Tech-Inc/agent-discover-scanner/stargazers) | [![Last commit](https://img.shields.io/github/last-commit/Defend-AI-Tech-Inc/agent-discover-scanner?style=flat&label=)](https://github.com/Defend-AI-Tech-Inc/agent-discover-scanner/commits) |
 
-<div align="right"><a href="#contents">↑ back to contents</a></div>
+<div align="right"><a href="#top">↑ back to top</a></div>
 
 ## Defend AI
 
 ### Guardrails & AI Firewalls
 
-Input / output filtering, prompt-injection and jailbreak detection, LLM firewalls and gateways.
-
-<sub>OWASP: stage *Deploy, Operate* · landscape *GenAI LLM* · risks LLM01, LLM02, LLM05, LLM07</sub>
+> Input / output filtering, prompt-injection and jailbreak detection, LLM firewalls and gateways.  
+> **24 tools** · OWASP: stage *Deploy, Operate* · landscape *GenAI LLM* · risks LLM01, LLM02, LLM05, LLM07
 
 | Project | Description | Stars | Last commit |
 | --- | --- | --- | --- |
@@ -201,13 +176,12 @@ Input / output filtering, prompt-injection and jailbreak detection, LLM firewall
 | [**piighost**](https://github.com/Athroniaeth/piighost) | Reversible PII masking for LLM agents: piighost replaces personal data with placeholders before the… | [![Stars](https://img.shields.io/github/stars/Athroniaeth/piighost?style=flat&label=%E2%98%85)](https://github.com/Athroniaeth/piighost/stargazers) | [![Last commit](https://img.shields.io/github/last-commit/Athroniaeth/piighost?style=flat&label=)](https://github.com/Athroniaeth/piighost/commits) |
 | [**TrustGate**](https://github.com/NeuralTrust/TrustGate) | Open-source AI gateway for LLM and agent traffic — multi-provider routing, guardrails, semantic… | [![Stars](https://img.shields.io/github/stars/NeuralTrust/TrustGate?style=flat&label=%E2%98%85)](https://github.com/NeuralTrust/TrustGate/stargazers) | [![Last commit](https://img.shields.io/github/last-commit/NeuralTrust/TrustGate?style=flat&label=)](https://github.com/NeuralTrust/TrustGate/commits) |
 
-<div align="right"><a href="#contents">↑ back to contents</a></div>
+<div align="right"><a href="#top">↑ back to top</a></div>
 
 ### Agent & MCP Runtime Security
 
-Runtime control for agents: MCP gateways and firewalls, sandboxes, agent identity, detection rules.
-
-<sub>OWASP: stage *Deploy, Operate, Monitor* · landscape *Agentic* · risks ASI02, ASI03, ASI05, ASI06, ASI10</sub>
+> Runtime control for agents: MCP gateways and firewalls, sandboxes, agent identity, detection rules.  
+> **15 tools** · OWASP: stage *Deploy, Operate, Monitor* · landscape *Agentic* · risks ASI02, ASI03, ASI05, ASI06, ASI10
 
 | Project | Description | Stars | Last commit |
 | --- | --- | --- | --- |
@@ -227,13 +201,12 @@ Runtime control for agents: MCP gateways and firewalls, sandboxes, agent identit
 | [**Brood Box**](https://github.com/stacklok/brood-box) | CLI tool for running coding agents inside hardware-isolated microVMs | [![Stars](https://img.shields.io/github/stars/stacklok/brood-box?style=flat&label=%E2%98%85)](https://github.com/stacklok/brood-box/stargazers) | [![Last commit](https://img.shields.io/github/last-commit/stacklok/brood-box?style=flat&label=)](https://github.com/stacklok/brood-box/commits) |
 | [**Agent Identity Management**](https://github.com/opena2a-org/agent-identity-management) | The IAM layer for AI agents: cryptographic identity, capability authorization, and audit trails for… | [![Stars](https://img.shields.io/github/stars/opena2a-org/agent-identity-management?style=flat&label=%E2%98%85)](https://github.com/opena2a-org/agent-identity-management/stargazers) | [![Last commit](https://img.shields.io/github/last-commit/opena2a-org/agent-identity-management?style=flat&label=)](https://github.com/opena2a-org/agent-identity-management/commits) |
 
-<div align="right"><a href="#contents">↑ back to contents</a></div>
+<div align="right"><a href="#top">↑ back to top</a></div>
 
 ### Model & Supply-Chain Security
 
-Scan model artifacts (pickle, PyTorch, Keras, …) for malicious code.
-
-<sub>OWASP: stage *Develop & Experiment, Release* · landscape *GenAI LLM* · risks LLM03, LLM04, ASI04</sub>
+> Scan model artifacts (pickle, PyTorch, Keras, …) for malicious code.  
+> **6 tools** · OWASP: stage *Develop & Experiment, Release* · landscape *GenAI LLM* · risks LLM03, LLM04, ASI04
 
 | Project | Description | Stars | Last commit |
 | --- | --- | --- | --- |
@@ -244,15 +217,14 @@ Scan model artifacts (pickle, PyTorch, Keras, …) for malicious code.
 | [**aisbom**](https://github.com/Lab700xOrg/aisbom) | Static security scanner for ML model files — detects pickle bombs, Keras Lambda RCE and GGUF… | [![Stars](https://img.shields.io/github/stars/Lab700xOrg/aisbom?style=flat&label=%E2%98%85)](https://github.com/Lab700xOrg/aisbom/stargazers) | [![Last commit](https://img.shields.io/github/last-commit/Lab700xOrg/aisbom?style=flat&label=)](https://github.com/Lab700xOrg/aisbom/commits) |
 | [**Activation Model Scanner**](https://github.com/GoogleCloudPlatform/activation-model-scanner) | Verify language model safety before deployment by analyzing activation patterns | [![Stars](https://img.shields.io/github/stars/GoogleCloudPlatform/activation-model-scanner?style=flat&label=%E2%98%85)](https://github.com/GoogleCloudPlatform/activation-model-scanner/stargazers) | [![Last commit](https://img.shields.io/github/last-commit/GoogleCloudPlatform/activation-model-scanner?style=flat&label=)](https://github.com/GoogleCloudPlatform/activation-model-scanner/commits) |
 
-<div align="right"><a href="#contents">↑ back to contents</a></div>
+<div align="right"><a href="#top">↑ back to top</a></div>
 
 ## Hack with AI
 
 ### AI Pentest Agents
 
-LLM agents and assistants that test web apps, APIs and infrastructure.
-
-<sub>OWASP: — (AI for security; outside the OWASP GenAI landscape)</sub>
+> LLM agents and assistants that test web apps, APIs and infrastructure.  
+> **63 tools** · OWASP: — (AI for security; outside the OWASP GenAI landscape)
 
 | Project | Description | Stars | Last commit |
 | --- | --- | --- | --- |
@@ -320,13 +292,12 @@ LLM agents and assistants that test web apps, APIs and infrastructure.
 | [**mcp-shodan**](https://github.com/ADEOSec/mcp-shodan) | The Shodan MCP Server by ADEO Cybersecurity Services provides cybersecurity professionals with… | [![Stars](https://img.shields.io/github/stars/ADEOSec/mcp-shodan?style=flat&label=%E2%98%85)](https://github.com/ADEOSec/mcp-shodan/stargazers) | [![Last commit](https://img.shields.io/github/last-commit/ADEOSec/mcp-shodan?style=flat&label=)](https://github.com/ADEOSec/mcp-shodan/commits) |
 | [**Obsius-AI**](https://github.com/ILOVCTRY/Obsius-AI) | AI驱动的智能体协作工具，用于逆向，渗透测试等。 | [![Stars](https://img.shields.io/github/stars/ILOVCTRY/Obsius-AI?style=flat&label=%E2%98%85)](https://github.com/ILOVCTRY/Obsius-AI/stargazers) | [![Last commit](https://img.shields.io/github/last-commit/ILOVCTRY/Obsius-AI?style=flat&label=)](https://github.com/ILOVCTRY/Obsius-AI/commits) |
 
-<div align="right"><a href="#contents">↑ back to contents</a></div>
+<div align="right"><a href="#top">↑ back to top</a></div>
 
 ### AI Code Auditing
 
-LLM-driven source code review, variant hunting and vulnerability discovery.
-
-<sub>OWASP: — (AI for security; outside the OWASP GenAI landscape)</sub>
+> LLM-driven source code review, variant hunting and vulnerability discovery.  
+> **42 tools** · OWASP: — (AI for security; outside the OWASP GenAI landscape)
 
 | Project | Description | Stars | Last commit |
 | --- | --- | --- | --- |
@@ -373,13 +344,12 @@ LLM-driven source code review, variant hunting and vulnerability discovery.
 | [**xvulnhuntr**](https://github.com/CompassSecurity/xvulnhuntr) 🗄️ | Zero shot vulnerability discovery using LLMs | [![Stars](https://img.shields.io/github/stars/CompassSecurity/xvulnhuntr?style=flat&label=%E2%98%85)](https://github.com/CompassSecurity/xvulnhuntr/stargazers) | [![Last commit](https://img.shields.io/github/last-commit/CompassSecurity/xvulnhuntr?style=flat&label=)](https://github.com/CompassSecurity/xvulnhuntr/commits) |
 | [**VulTriage**](https://github.com/vinsontang1/VulTriage) | The code of VulTriage: Triple-Path Context Augmentation for LLM-Based Vulnerability Detection | [![Stars](https://img.shields.io/github/stars/vinsontang1/VulTriage?style=flat&label=%E2%98%85)](https://github.com/vinsontang1/VulTriage/stargazers) | [![Last commit](https://img.shields.io/github/last-commit/vinsontang1/VulTriage?style=flat&label=)](https://github.com/vinsontang1/VulTriage/commits) |
 
-<div align="right"><a href="#contents">↑ back to contents</a></div>
+<div align="right"><a href="#top">↑ back to top</a></div>
 
 ### AI Reverse Engineering
 
-LLM / MCP integrations for IDA, Ghidra, Binary Ninja, radare2, JADX, Frida and friends.
-
-<sub>OWASP: — (AI for security; outside the OWASP GenAI landscape)</sub>
+> LLM / MCP integrations for IDA, Ghidra, Binary Ninja, radare2, JADX, Frida and friends.  
+> **21 tools** · OWASP: — (AI for security; outside the OWASP GenAI landscape)
 
 | Project | Description | Stars | Last commit |
 | --- | --- | --- | --- |
@@ -405,13 +375,12 @@ LLM / MCP integrations for IDA, Ghidra, Binary Ninja, radare2, JADX, Frida and f
 | [**binaryninja-mcp**](https://github.com/MCPPhalanx/binaryninja-mcp) | Another™ MCP Server for Binary Ninja with superpower 🥵 | [![Stars](https://img.shields.io/github/stars/MCPPhalanx/binaryninja-mcp?style=flat&label=%E2%98%85)](https://github.com/MCPPhalanx/binaryninja-mcp/stargazers) | [![Last commit](https://img.shields.io/github/last-commit/MCPPhalanx/binaryninja-mcp?style=flat&label=)](https://github.com/MCPPhalanx/binaryninja-mcp/commits) |
 | [**Reverse Engineering Skills**](https://github.com/hackersifu/reverse-engineering-skills) | Skills related to reverse engineering malware, for various AIs | [![Stars](https://img.shields.io/github/stars/hackersifu/reverse-engineering-skills?style=flat&label=%E2%98%85)](https://github.com/hackersifu/reverse-engineering-skills/stargazers) | [![Last commit](https://img.shields.io/github/last-commit/hackersifu/reverse-engineering-skills?style=flat&label=)](https://github.com/hackersifu/reverse-engineering-skills/commits) |
 
-<div align="right"><a href="#contents">↑ back to contents</a></div>
+<div align="right"><a href="#top">↑ back to top</a></div>
 
 ### Security Skills for Coding Agents
 
-Skill packs and plugins that turn Claude Code, Codex & co. into security assistants.
-
-<sub>OWASP: — (AI for security; outside the OWASP GenAI landscape)</sub>
+> Skill packs and plugins that turn Claude Code, Codex & co. into security assistants.  
+> **50 tools** · OWASP: — (AI for security; outside the OWASP GenAI landscape)
 
 | Project | Description | Stars | Last commit |
 | --- | --- | --- | --- |
@@ -466,15 +435,14 @@ Skill packs and plugins that turn Claude Code, Codex & co. into security assista
 | [**claude-skill-security-auditor**](https://github.com/wrsmith108/claude-skill-security-auditor) | Claude Code skill for running structured security audits with actionable remediation plans | [![Stars](https://img.shields.io/github/stars/wrsmith108/claude-skill-security-auditor?style=flat&label=%E2%98%85)](https://github.com/wrsmith108/claude-skill-security-auditor/stargazers) | [![Last commit](https://img.shields.io/github/last-commit/wrsmith108/claude-skill-security-auditor?style=flat&label=)](https://github.com/wrsmith108/claude-skill-security-auditor/commits) |
 | [**secure-supply-chain-skills**](https://github.com/latiotech/secure-supply-chain-skills) | A set of tools for claude code to fix insecure software supply chain configurations | [![Stars](https://img.shields.io/github/stars/latiotech/secure-supply-chain-skills?style=flat&label=%E2%98%85)](https://github.com/latiotech/secure-supply-chain-skills/stargazers) | [![Last commit](https://img.shields.io/github/last-commit/latiotech/secure-supply-chain-skills?style=flat&label=)](https://github.com/latiotech/secure-supply-chain-skills/commits) |
 
-<div align="right"><a href="#contents">↑ back to contents</a></div>
+<div align="right"><a href="#top">↑ back to top</a></div>
 
 ## Practice & Measure
 
 ### Vulnerable AI Labs
 
-Deliberately vulnerable LLM apps, agents and MCP servers to practice against.
-
-<sub>OWASP: stage *Test & Evaluate* · landscape *Red Teaming*</sub>
+> Deliberately vulnerable LLM apps, agents and MCP servers to practice against.  
+> **16 tools** · OWASP: stage *Test & Evaluate* · landscape *Red Teaming*
 
 | Project | Description | Stars | Last commit |
 | --- | --- | --- | --- |
@@ -495,13 +463,12 @@ Deliberately vulnerable LLM apps, agents and MCP servers to practice against.
 | [**ScottLogic prompt-injection**](https://github.com/ScottLogic/prompt-injection) | Application which investigates defensive measures against prompt injection attacks on an LLM, with… | [![Stars](https://img.shields.io/github/stars/ScottLogic/prompt-injection?style=flat&label=%E2%98%85)](https://github.com/ScottLogic/prompt-injection/stargazers) | [![Last commit](https://img.shields.io/github/last-commit/ScottLogic/prompt-injection?style=flat&label=)](https://github.com/ScottLogic/prompt-injection/commits) |
 | [**local-llm-ctf**](https://github.com/BishopFox/local-llm-ctf) | A small go harness that uses Ollama to orchestrate LLMs in a restricted process flow | [![Stars](https://img.shields.io/github/stars/BishopFox/local-llm-ctf?style=flat&label=%E2%98%85)](https://github.com/BishopFox/local-llm-ctf/stargazers) | [![Last commit](https://img.shields.io/github/last-commit/BishopFox/local-llm-ctf?style=flat&label=)](https://github.com/BishopFox/local-llm-ctf/commits) |
 
-<div align="right"><a href="#contents">↑ back to contents</a></div>
+<div align="right"><a href="#top">↑ back to top</a></div>
 
 ### Benchmarks & Datasets
 
-Datasets and benchmarks for measuring attacks, defenses and AI security agents.
-
-<sub>OWASP: stage *Test & Evaluate* · landscape *Red Teaming*</sub>
+> Datasets and benchmarks for measuring attacks, defenses and AI security agents.  
+> **46 tools** · OWASP: stage *Test & Evaluate* · landscape *Red Teaming*
 
 | Project | Description | Stars | Last commit |
 | --- | --- | --- | --- |
@@ -552,7 +519,7 @@ Datasets and benchmarks for measuring attacks, defenses and AI security agents.
 | [**SECURE**](https://github.com/aiforsec/SECURE) | SECURE: Benchmarking Generative Large Language Models as a Cyber Advisory | [![Stars](https://img.shields.io/github/stars/aiforsec/SECURE?style=flat&label=%E2%98%85)](https://github.com/aiforsec/SECURE/stargazers) | [![Last commit](https://img.shields.io/github/last-commit/aiforsec/SECURE?style=flat&label=)](https://github.com/aiforsec/SECURE/commits) |
 | [**ToolSword**](https://github.com/Junjie-Ye/ToolSword) | [ACL 2024] ToolSword: Unveiling Safety Issues of Large Language Models in Tool Learning Across… | [![Stars](https://img.shields.io/github/stars/Junjie-Ye/ToolSword?style=flat&label=%E2%98%85)](https://github.com/Junjie-Ye/ToolSword/stargazers) | [![Last commit](https://img.shields.io/github/last-commit/Junjie-Ye/ToolSword?style=flat&label=)](https://github.com/Junjie-Ye/ToolSword/commits) |
 
-<div align="right"><a href="#contents">↑ back to contents</a></div>
+<div align="right"><a href="#top">↑ back to top</a></div>
 
 ## Contribute
 

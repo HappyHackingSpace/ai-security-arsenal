@@ -103,21 +103,17 @@ def main():
            '  <img alt="AI Security Arsenal: open source tools to attack, defend and hack with AI" '
            'src="assets/banner-light.svg" width="100%">',
            "</picture>", "",
-           " ".join([shield("tools", str(total), "blue", "#contents"),
+           " ".join([shield("tools", str(total), "blue", anchor(groups[0])),
                      shield("categories", str(len(cats)), "blue", "TEMPLATE.md#categories-fixed"),
                      shield("updated", date.today().isoformat(), "green", "../../commits/main"),
                      shield("suggest", "a tool", "orange", ISSUE)]), "",
-           " · ".join(f"[{g}]({anchor(g)})" for g in groups), "", "</div>", "",
-           "## Contents", "", "| Group | Category | Tools |", "| --- | --- | --: |"]
-    for g in groups:
-        out += [f"| {g if i == 0 else ''} | [{c['title']}]({anchor(c['title'])}) | {len(rows.get(c['key'], []))} |"
-                for i, c in enumerate(c for c in cats if c["group"] == g)]
-    out.append("")
+           " · ".join(f"[{g}]({anchor(g)})" for g in groups), "", "</div>", ""]
 
     for c in cats:
         if c["group"] in groups:
             out += [f"## {groups.pop(0)}", ""]
-        out += [f"### {c['title']}", "", c["blurb"], "", f"<sub>OWASP: {owasp(c)}</sub>", "",
+        n = len(rows.get(c["key"], []))
+        out += [f"### {c['title']}", "", f"> {c['blurb']}  ", f"> **{n} tools** · OWASP: {owasp(c)}", "",
                 "| Project | Description | Stars | Last commit |",
                 "| --- | --- | --- | --- |"]
         for r, m in sorted(rows.get(c["key"], []), key=lambda x: (x[1]["stargazers_count"], x[1]["last_commit"]), reverse=True):
@@ -125,7 +121,7 @@ def main():
             arch = " 🗄️" if m["archived"] else ""
             out.append(f"| [**{name}**](https://github.com/{m['full_name']}){arch} | "
                        f"{short(r['note'] or m['description'])} | {badges(m['full_name'])} |")
-        out += ["", '<div align="right"><a href="#contents">↑ back to contents</a></div>', ""]
+        out += ["", '<div align="right"><a href="#top">↑ back to top</a></div>', ""]
 
     out += ["## Contribute", "", f"Suggest a tool with the [Add a tool]({ISSUE}) issue form, or open a PR: "
             "add a row to `data/repos.csv` and run `python3 scripts/build.py`. Details in [TEMPLATE.md](TEMPLATE.md).", ""]
