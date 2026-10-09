@@ -1,5 +1,6 @@
-# "Add a tool" issue → validated repos.csv row → pull request. Merging the PR closes the issue;
-# build.yml then regenerates README.md.
+# "Add a tool" issue → validated repos.csv row → pull request. Merging the PR closes the issue (the
+# `close` job: "Closes #N" was not linked on the bot-opened PR #2); build.yml then
+# regenerates README.md.
 # Security: the issue body is attacker-controlled. It reaches only issue.py via env (never `${{ }}` in
 # a run: script); everything passed on to the shell is regex-validated or comes from the GitHub API.
 name: Issue to PR
@@ -7,16 +8,18 @@ name: Issue to PR
 on:
   issues:
     types: [opened, edited]
+  pull_request:
+    types: [closed]
 
 permissions: {}
 
 concurrency:
-  group: issue-${{ github.event.issue.number }}
+  group: issue-${{ github.event.issue.number || github.event.pull_request.number }}
   cancel-in-progress: true
 
 jobs:
   pr:
-    if: github.event.issue.state == 'open' && contains(github.event.issue.labels.*.name, 'new tool')
+    if: github.event_name == 'issues' && github.event.issue.state == 'open' && contains(github.event.issue.labels.*.name, 'new tool')
     runs-on: ubuntu-latest
     timeout-minutes: 5
     permissions:
@@ -64,3 +67,28 @@ jobs:
           gh issue comment "$N" --body-file "$RUNNER_TEMP/body.md"
           gh issue edit "$N" --add-label invalid
           gh pr close "$BRANCH" --delete-branch 2>/dev/null || true
+
+  close:
+    if: >-
+      github.event_name == 'pull_request' && github.event.pull_request.merged &&
+      github.event.pull_request.user.login == 'github-actions[bot]' &&
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      startsWith(github.event.pull_request.head.ref, 'add-tool/issue-')
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write # delete the merged add-tool/issue-N branch
+      issues: write # close the issue
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      HEAD_REF: ${{ github.event.pull_request.head.ref }}
+      PR: ${{ github.event.pull_request.number }}
+    steps:
+      - run: |
+          n="${HEAD_REF#add-tool/issue-}"
+          [[ "$n" =~ ^[0-9]+$ ]] || { echo "unexpected branch $HEAD_REF"; exit 1; }
+          if [ "$(gh issue view "$n" --json state --jq .state)" = OPEN ]; then
+            gh issue close "$n" --reason completed --comment "Added in #$PR. Thanks!"
+          fi
+          gh api -X DELETE "repos/$GH_REPO/git/refs/heads/$HEAD_REF" || true
