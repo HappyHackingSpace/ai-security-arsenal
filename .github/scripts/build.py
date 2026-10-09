@@ -159,8 +159,6 @@ def main():
                        f"{short(r['note'] or m['description'])} | {badges(m['full_name'])} |")
         out += ["", '<div align="right"><a href="#top">↑ back to top</a></div>', ""]
 
-    out += ["## Contribute", "", f"Suggest a tool with the [Add a tool]({ISSUE}) issue form, or open a PR: "
-            "add a row to `.github/data/repos.csv` and run `python3 .github/scripts/build.py`. Details in [CONTRIBUTING.md](.github/CONTRIBUTING.md).", ""]
     (ROOT / "README.md").write_text("\n".join(out))
     print(f"README.md: {sum(map(len, rows.values()))} repos", file=sys.stderr)
 
