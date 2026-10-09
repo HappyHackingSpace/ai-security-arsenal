@@ -3,7 +3,7 @@
 
 Usage: python3 .github/scripts/build.py
 """
-import csv, json, subprocess, sys
+import csv, json, subprocess, sys, urllib.error, urllib.request
 from datetime import date
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
@@ -23,6 +23,17 @@ FIELDS = """full_name:nameWithOwner stargazers_count:stargazerCount archived:isA
   defaultBranchRef{target{...on Commit{committedDate}}}"""
 
 
+def anonymous_meta(repo):
+    """Unauthenticated REST lookup (60 requests/hour), for the few repos a token can't read."""
+    try:
+        with urllib.request.urlopen(f"https://api.github.com/repos/{repo}", timeout=30) as f:
+            d = json.load(f)
+    except urllib.error.URLError as e:
+        sys.exit(f"{repo}: token access refused and anonymous lookup failed: {e}")
+    return {"full_name": d["full_name"], "stargazers_count": d["stargazers_count"], "archived": d["archived"],
+            "description": d["description"], "last_commit": d["pushed_at"]}
+
+
 def meta_batch(repos):
     """Metadata for up to ~50 repos in one GraphQL query (GITHUB_TOKEN allows 1000 points/hour); None if missing."""
     decl, body, args = [], [], []
@@ -34,11 +45,16 @@ def meta_batch(repos):
     query = f"query({','.join(decl)}){{{' '.join(body)}}}"
     r = subprocess.run(["gh", "api", "graphql", "-f", f"query={query}", *args], capture_output=True, text=True)
     resp = json.loads(r.stdout or "{}")
-    errors = [e for e in resp.get("errors", []) if e.get("type") != "NOT_FOUND"]
+    # Orgs with an IP allow list (e.g. lakeraai) refuse token requests from CI runners; their public repos
+    # are still readable anonymously.
+    blocked = {e["path"][0] for e in resp.get("errors", []) if e.get("type") == "FORBIDDEN" and e.get("path")}
+    errors = [e for e in resp.get("errors", []) if e.get("type") != "NOT_FOUND" and e.get("path", [""])[0] not in blocked]
     if errors or not resp.get("data"):  # never treat an API failure as "repo gone"
         sys.exit(f"gh api graphql failed: {errors or r.stderr.strip()}")
     out = []
     for i in range(len(repos)):
+        if f"r{i}" in blocked:
+            out.append(anonymous_meta(repos[i])); continue
         m = resp["data"].get(f"r{i}")
         if m:  # empty repos have no default branch
             m["last_commit"] = ((m.pop("defaultBranchRef") or {}).get("target") or {}).get("committedDate", "")
