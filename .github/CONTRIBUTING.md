@@ -1,6 +1,6 @@
 # Adding a tool
 
-Not a maintainer? Open an [Add a tool](https://github.com/omarkurt/ai-security-arsenal/issues/new?template=add-tool.yml) issue instead.
+Not a maintainer? Open an [Add a tool](https://github.com/HappyHackingSpace/ai-security-arsenal/issues/new?template=add-tool.yml) issue instead.
 
 `README.md` is generated. Edit `.github/data/repos.csv`, then run:
 

@@ -11,7 +11,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 DATA = ROOT / ".github" / "data"
 MIN_STARS = 10
-ISSUE = "https://github.com/omarkurt/ai-security-arsenal/issues/new?template=add-tool.yml"
+ISSUE = "https://github.com/HappyHackingSpace/ai-security-arsenal/issues/new?template=add-tool.yml"
 
 
 def load(name):

@@ -2,7 +2,7 @@
 
 <img alt="AI Security Arsenal: open source tools to attack, defend and hack with AI" src=".github/assets/banner.svg" width="100%">
 
-[![tools](https://img.shields.io/badge/tools-362-blue)](#attack-ai) [![categories](https://img.shields.io/badge/categories-14-blue)](.github/CONTRIBUTING.md#categories-fixed) [![updated](https://img.shields.io/badge/updated-2026--10--09-green)](../../commits/main) [![suggest](https://img.shields.io/badge/suggest-a%20tool-orange)](https://github.com/omarkurt/ai-security-arsenal/issues/new?template=add-tool.yml)
+[![tools](https://img.shields.io/badge/tools-362-blue)](#attack-ai) [![categories](https://img.shields.io/badge/categories-14-blue)](.github/CONTRIBUTING.md#categories-fixed) [![updated](https://img.shields.io/badge/updated-2026--10--09-green)](../../commits/main) [![suggest](https://img.shields.io/badge/suggest-a%20tool-orange)](https://github.com/HappyHackingSpace/ai-security-arsenal/issues/new?template=add-tool.yml)
 
 </div>
 
@@ -539,4 +539,4 @@
 
 ## Contribute
 
-Suggest a tool with the [Add a tool](https://github.com/omarkurt/ai-security-arsenal/issues/new?template=add-tool.yml) issue form, or open a PR: add a row to `.github/data/repos.csv` and run `python3 .github/scripts/build.py`. Details in [CONTRIBUTING.md](.github/CONTRIBUTING.md).
+Suggest a tool with the [Add a tool](https://github.com/HappyHackingSpace/ai-security-arsenal/issues/new?template=add-tool.yml) issue form, or open a PR: add a row to `.github/data/repos.csv` and run `python3 .github/scripts/build.py`. Details in [CONTRIBUTING.md](.github/CONTRIBUTING.md).

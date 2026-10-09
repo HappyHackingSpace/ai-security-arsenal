@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Tools only: no articles, standards, guides or curated lists. Full rules are in [CONTRIBUTING.md](https://github.com/omarkurt/ai-security-arsenal/blob/main/.github/CONTRIBUTING.md).
+        Tools only: no articles, standards, guides or curated lists. Full rules are in [CONTRIBUTING.md](https://github.com/HappyHackingSpace/ai-security-arsenal/blob/main/.github/CONTRIBUTING.md).
   - type: input
     id: repo
     attributes:
