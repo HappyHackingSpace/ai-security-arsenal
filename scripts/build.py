@@ -4,6 +4,7 @@
 Usage: python3 scripts/build.py
 """
 import csv, json, subprocess, sys
+from datetime import date
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
@@ -46,11 +47,13 @@ def short(desc, n=100):
     return desc if len(desc) <= n else desc[:n].rsplit(" ", 1)[0].rstrip(",.;:") + "…"
 
 
-def badges(repo):
-    gh, sh = f"https://github.com/{repo}", f"https://img.shields.io/github"
-    return (f"[![Last Commit]({sh}/last-commit/{repo})]({gh}/commits) | "
-            f"[![Contributors]({sh}/contributors/{repo})]({gh}/graphs/contributors) | "
-            f"[![Stars]({sh}/stars/{repo})]({gh}/stargazers)")
+def stars(n):
+    return f"{n / 1000:.1f}k".replace(".0k", "k") if n >= 1000 else str(n)
+
+
+def shield(label, msg, color, link):
+    q = lambda t: t.replace("-", "--").replace(" ", "%20")
+    return f"[![{label}](https://img.shields.io/badge/{q(label)}-{q(msg)}-{color})]({link})"
 
 
 def owasp(c):
@@ -91,31 +94,37 @@ def main():
             warn(f"{r['repo']}: {m['stargazers_count']} stars < {MIN_STARS} — omitted"); continue
         rows.setdefault(r["category"], []).append((r, m))
 
-    out = ["# AI Security Arsenal", "",
-           "Open source tools for AI security: attack AI, defend AI, hack with AI.", "",
-           f"- {sum(map(len, rows.values()))} tools in {len(cats)} categories, each sorted by last commit",
-           f"- GitHub only, at least {MIN_STARS} stars; 🗄️ = archived",
-           "- Tools only, no articles or standards",
-           f"- Know a tool that's missing? [Suggest it with an issue]({ISSUE}), or see [TEMPLATE.md](TEMPLATE.md) to open a PR", "",
-           "## Contents", ""]
+    total = sum(map(len, rows.values()))
     groups = list(dict.fromkeys(c["group"] for c in cats))
+    out = ['<div align="center">', "", "# AI Security Arsenal", "",
+           "Open source tools for AI security.<br>", "**Attack AI · Defend AI · Hack with AI**", "",
+           " ".join([shield("tools", str(total), "blue", "#contents"),
+                     shield("categories", str(len(cats)), "blue", "TEMPLATE.md#categories-fixed"),
+                     shield("updated", date.today().isoformat(), "green", "../../commits/main"),
+                     shield("suggest", "a tool", "orange", ISSUE)]), "",
+           " · ".join(f"[{g}]({anchor(g)})" for g in groups), "", "</div>", "",
+           f"Tools only, no articles or standards. GitHub repos with at least {MIN_STARS} stars, "
+           "each category sorted by last commit; 🗄️ = archived. "
+           f"Missing one? [Suggest it]({ISSUE}).", "",
+           "## Contents", "", "| Group | Category | Tools |", "| --- | --- | --: |"]
     for g in groups:
-        out.append(f"- [{g}]({anchor(g)})")
-        out += [f"  - [{c['title']}]({anchor(c['title'])})" for c in cats if c["group"] == g]
+        out += [f"| {g if i == 0 else ''} | [{c['title']}]({anchor(c['title'])}) | {len(rows.get(c['key'], []))} |"
+                for i, c in enumerate(c for c in cats if c["group"] == g)]
     out.append("")
 
     for c in cats:
         if c["group"] in groups:
             out += [f"## {groups.pop(0)}", ""]
-        out += [f"### {c['title']}", "", c["blurb"], "", f"OWASP: {owasp(c)}", "",
-                "| Project | Description | Last Commit | Committers | Stars |",
-                "| --- | --- | --- | --- | --- |"]
+        out += [f"### {c['title']}", "", c["blurb"], "", f"<sub>OWASP: {owasp(c)}</sub>", "",
+                "| Project | Description | Stars | Last commit |",
+                "| --- | --- | --: | --- |"]
         for r, m in sorted(rows.get(c["key"], []), key=lambda x: x[1]["last_commit"], reverse=True):
             name = r["name"] or m["full_name"].split("/")[1]
             arch = " 🗄️" if m["archived"] else ""
-            out.append(f"| [{name}](https://github.com/{m['full_name']}){arch} | "
-                       f"{short(r['note'] or m['description'])} | {badges(m['full_name'])} |")
-        out.append("")
+            out.append(f"| [**{name}**](https://github.com/{m['full_name']}){arch} | "
+                       f"{short(r['note'] or m['description'])} | ⭐&nbsp;{stars(m['stargazers_count'])} | "
+                       f"{m['last_commit'][:10]} |")
+        out += ["", '<div align="right"><a href="#contents">↑ back to contents</a></div>', ""]
 
     out += ["## Contribute", "", f"Suggest a tool with the [Add a tool]({ISSUE}) issue form, or open a PR: "
             "add a row to `data/repos.csv` and run `python3 scripts/build.py`. Details in [TEMPLATE.md](TEMPLATE.md).", ""]
