@@ -1,5 +1,7 @@
 # Adding a tool
 
+Not a maintainer? Open an [Add a tool](../../issues/new?template=add-tool.yml) issue instead.
+
 `README.md` is generated. Edit `data/repos.csv`, then run:
 
 ```sh

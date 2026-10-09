@@ -115,8 +115,8 @@ def main():
                        f"{short(r['note'] or m['description'])} | {badges(m['full_name'])} |")
         out.append("")
 
-    out += ["## Contribute", "", "PRs welcome — add a row to `data/repos.csv` and run `python3 scripts/build.py`. "
-            "Details in [TEMPLATE.md](TEMPLATE.md).", ""]
+    out += ["## Contribute", "", "Suggest a tool with the [Add a tool](../../issues/new?template=add-tool.yml) issue form, or open a PR: "
+            "add a row to `data/repos.csv` and run `python3 scripts/build.py`. Details in [TEMPLATE.md](TEMPLATE.md).", ""]
     (ROOT / "README.md").write_text("\n".join(out))
     print(f"README.md: {sum(map(len, rows.values()))} repos", file=sys.stderr)
 

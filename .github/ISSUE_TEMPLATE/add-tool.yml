@@ -1,0 +1,60 @@
+name: Add a tool
+description: Suggest an open source AI security tool for the list
+title: "Add: owner/repo"
+labels: ["new tool"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Tools only: no articles, standards, guides or curated lists. Full rules are in [TEMPLATE.md](https://github.com/omarkurt/ai-security-arsenal/blob/main/TEMPLATE.md).
+  - type: input
+    id: repo
+    attributes:
+      label: GitHub repo
+      description: Full URL or `owner/repo`. Use the current name if the repo was moved.
+      placeholder: https://github.com/owner/repo
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      description: Pick by primary purpose. The list is fixed; see TEMPLATE.md → Categories.
+      options:
+        - "Attack AI / scanners: LLM Red Teaming & Scanners"
+        - "Attack AI / agent-testing: Agent & MCP Security Testing"
+        - "Attack AI / adversarial-ml: Adversarial ML"
+        - "Attack AI / payloads: Jailbreak & Injection Payloads"
+        - "Attack AI / discovery: AI Asset Discovery"
+        - "Defend AI / guardrails: Guardrails & AI Firewalls"
+        - "Defend AI / agent-runtime: Agent & MCP Runtime Security"
+        - "Defend AI / model: Model & Supply-Chain Security"
+        - "Hack with AI / pentest: AI Pentest Agents"
+        - "Hack with AI / code-audit: AI Code Auditing"
+        - "Hack with AI / reversing: AI Reverse Engineering"
+        - "Hack with AI / skills: Security Skills for Coding Agents"
+        - "Practice & Measure / labs: Vulnerable AI Labs"
+        - "Practice & Measure / benchmarks: Benchmarks & Datasets"
+        - "Not sure"
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: What does it do?
+      description: One or two sentences. Why is it an AI security tool?
+    validations:
+      required: true
+  - type: checkboxes
+    id: rules
+    attributes:
+      label: Checklist
+      options:
+        - label: It is a tool (CLI, library, server, plugin, skill pack, benchmark, lab or payload set), not an article, guide or list
+          required: true
+        - label: Open source on GitHub with at least 10 stars
+          required: true
+        - label: Not a malware, RAT, C2 or phishing builder
+          required: true
+        - label: Not already in the README
+          required: true
