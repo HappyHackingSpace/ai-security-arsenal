@@ -1,9 +1,6 @@
 <div align="center">
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/banner-dark.svg">
-  <img alt="AI Security Arsenal: open source tools to attack, defend and hack with AI" src="assets/banner-light.svg" width="100%">
-</picture>
+<img alt="AI Security Arsenal: open source tools to attack, defend and hack with AI" src="assets/banner.svg" width="100%">
 
 [![tools](https://img.shields.io/badge/tools-362-blue)](#attack-ai) [![categories](https://img.shields.io/badge/categories-14-blue)](TEMPLATE.md#categories-fixed) [![updated](https://img.shields.io/badge/updated-2026--10--09-green)](../../commits/main) [![suggest](https://img.shields.io/badge/suggest-a%20tool-orange)](https://github.com/omarkurt/ai-security-arsenal/issues/new?template=add-tool.yml)
 
