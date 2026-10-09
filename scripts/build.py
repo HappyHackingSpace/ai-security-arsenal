@@ -107,7 +107,11 @@ def main():
                      shield("categories", str(len(cats)), "blue", "TEMPLATE.md#categories-fixed"),
                      shield("updated", date.today().isoformat(), "green", "../../commits/main"),
                      shield("suggest", "a tool", "orange", ISSUE)]), "",
-           " · ".join(f"[{g}]({anchor(g)})" for g in groups), "", "</div>", ""]
+           "</div>", ""]
+    for g in groups:  # TOC: one line per group, category links with tool counts
+        out += [f"**[{g}]({anchor(g)})**<br>", " · ".join(
+            f"[{c['title']}]({anchor(c['title'])})&nbsp;<sup>{len(rows.get(c['key'], []))}</sup>"
+            for c in cats if c["group"] == g), ""]
 
     for c in cats:
         if c["group"] in groups:

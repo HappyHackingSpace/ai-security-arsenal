@@ -7,9 +7,19 @@
 
 [![tools](https://img.shields.io/badge/tools-362-blue)](#attack-ai) [![categories](https://img.shields.io/badge/categories-14-blue)](TEMPLATE.md#categories-fixed) [![updated](https://img.shields.io/badge/updated-2026--10--09-green)](../../commits/main) [![suggest](https://img.shields.io/badge/suggest-a%20tool-orange)](https://github.com/omarkurt/ai-security-arsenal/issues/new?template=add-tool.yml)
 
-[Attack AI](#attack-ai) · [Defend AI](#defend-ai) · [Hack with AI](#hack-with-ai) · [Practice & Measure](#practice--measure)
-
 </div>
+
+**[Attack AI](#attack-ai)**<br>
+[LLM Red Teaming & Scanners](#llm-red-teaming--scanners)&nbsp;<sup>37</sup> · [Agent & MCP Security Testing](#agent--mcp-security-testing)&nbsp;<sup>18</sup> · [Adversarial ML](#adversarial-ml)&nbsp;<sup>6</sup> · [Jailbreak & Injection Payloads](#jailbreak--injection-payloads)&nbsp;<sup>14</sup> · [AI Asset Discovery](#ai-asset-discovery)&nbsp;<sup>4</sup>
+
+**[Defend AI](#defend-ai)**<br>
+[Guardrails & AI Firewalls](#guardrails--ai-firewalls)&nbsp;<sup>24</sup> · [Agent & MCP Runtime Security](#agent--mcp-runtime-security)&nbsp;<sup>15</sup> · [Model & Supply-Chain Security](#model--supply-chain-security)&nbsp;<sup>6</sup>
+
+**[Hack with AI](#hack-with-ai)**<br>
+[AI Pentest Agents](#ai-pentest-agents)&nbsp;<sup>63</sup> · [AI Code Auditing](#ai-code-auditing)&nbsp;<sup>42</sup> · [AI Reverse Engineering](#ai-reverse-engineering)&nbsp;<sup>21</sup> · [Security Skills for Coding Agents](#security-skills-for-coding-agents)&nbsp;<sup>50</sup>
+
+**[Practice & Measure](#practice--measure)**<br>
+[Vulnerable AI Labs](#vulnerable-ai-labs)&nbsp;<sup>16</sup> · [Benchmarks & Datasets](#benchmarks--datasets)&nbsp;<sup>46</sup>
 
 ## Attack AI
 
