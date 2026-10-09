@@ -823,3 +823,4 @@ skip,amartelr/antigravity-workspace-manager,,clippings: general tool
 skip,alexgoller/illumio-mcp-server,,clippings low-confidence pentest: Illumio MCP server
 skip,nedcodes-ok/rule-porter,,clippings: rule converter
 scanners,ahow2004/injectlab,,
+pentest,jiwoochris/artex-ko,,
