@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """Print GitHub repos from a Raindrop CSV export (or any CSV with a `url` column)
-that are not yet in data/repos.csv, as ready-to-paste rows.
+that are not yet in .github/data/repos.csv, as ready-to-paste rows.
 
-Usage: python3 scripts/inbox.py ~/Downloads/AI.csv
+Usage: python3 .github/scripts/inbox.py ~/Downloads/AI.csv
 """
 import csv, re, sys
 from pathlib import Path
 
-DATA = Path(__file__).resolve().parent.parent / "data"
+DATA = Path(__file__).resolve().parents[2] / ".github" / "data"
 GH = re.compile(r"https?://github\.com/([^/#?]+/[^/#?]+)")
 
 with open(DATA / "repos.csv", newline="") as f:

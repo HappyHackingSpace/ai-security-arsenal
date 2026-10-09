@@ -1,7 +1,7 @@
 #!/bin/sh
 # Render README.md with GitHub's own markdown API and open it in the browser.
 set -e
-cd "$(dirname "$0")/.."
+cd "$(dirname "$0")/../.."
 out="${TMPDIR:-/tmp}/ai-security-arsenal-preview.html"
 {
   echo '<!doctype html><meta charset="utf-8"><title>ai-security-arsenal preview</title>'

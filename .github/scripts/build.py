@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
-"""Render README.md from data/*.csv. Fetches live repo metadata via `gh api`.
+"""Render README.md from .github/data/*.csv. Fetches live repo metadata via `gh api`.
 
-Usage: python3 scripts/build.py
+Usage: python3 .github/scripts/build.py
 """
 import csv, json, subprocess, sys
 from datetime import date
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
-DATA = ROOT / "data"
+ROOT = Path(__file__).resolve().parents[2]
+DATA = ROOT / ".github" / "data"
 MIN_STARS = 10
 ISSUE = "https://github.com/omarkurt/ai-security-arsenal/issues/new?template=add-tool.yml"
 
@@ -99,9 +99,9 @@ def main():
     total = sum(map(len, rows.values()))
     groups = list(dict.fromkeys(c["group"] for c in cats))
     out = ['<div align="center">', "", '<img alt="AI Security Arsenal: open source tools to attack, defend and hack with AI" '
-           'src="assets/banner.svg" width="100%">', "",
+           'src=".github/assets/banner.svg" width="100%">', "",
            " ".join([shield("tools", str(total), "blue", anchor(groups[0])),
-                     shield("categories", str(len(cats)), "blue", "TEMPLATE.md#categories-fixed"),
+                     shield("categories", str(len(cats)), "blue", ".github/CONTRIBUTING.md#categories-fixed"),
                      shield("updated", date.today().isoformat(), "green", "../../commits/main"),
                      shield("suggest", "a tool", "orange", ISSUE)]), "",
            "</div>", ""]
@@ -127,21 +127,21 @@ def main():
         out += ["", '<div align="right"><a href="#top">↑ back to top</a></div>', ""]
 
     out += ["## Contribute", "", f"Suggest a tool with the [Add a tool]({ISSUE}) issue form, or open a PR: "
-            "add a row to `data/repos.csv` and run `python3 scripts/build.py`. Details in [TEMPLATE.md](TEMPLATE.md).", ""]
+            "add a row to `.github/data/repos.csv` and run `python3 .github/scripts/build.py`. Details in [CONTRIBUTING.md](.github/CONTRIBUTING.md).", ""]
     (ROOT / "README.md").write_text("\n".join(out))
     print(f"README.md: {sum(map(len, rows.values()))} repos", file=sys.stderr)
 
-    # Keep the category table in TEMPLATE.md in sync with data/categories.csv.
+    # Keep the category table in CONTRIBUTING.md in sync with .github/data/categories.csv.
     table = ["| Group | Key | Category | OWASP mapping |", "| --- | --- | --- | --- |"]
     table += [f"| {c['group']} | `{c['key']}` | {c['title']} | {owasp(c)} |" for c in cats]
-    tpl = ROOT / "TEMPLATE.md"
+    tpl = ROOT / ".github" / "CONTRIBUTING.md"
     text = tpl.read_text()
     start, end = "<!-- categories:start -->", "<!-- categories:end -->"
     if start in text and end in text:
         head, rest = text.split(start, 1)
         tpl.write_text(head + start + "\n" + "\n".join(table) + "\n" + end + rest.split(end, 1)[1])
     else:
-        warn("TEMPLATE.md: category markers missing — table not updated")
+        warn("CONTRIBUTING.md: category markers missing — table not updated")
 
 
 if __name__ == "__main__":

@@ -1,7 +1,7 @@
 # Clippings review prompt
 
 Used to triage GitHub repos pre-filtered from the Obsidian `Clippings/` folder (or any bookmark dump)
-before they go into `data/repos.csv`. Category keys come from `data/categories.csv`; scope rules mirror `TEMPLATE.md`.
+before they go into `.github/data/repos.csv`. Category keys come from `.github/data/categories.csv`; scope rules mirror `CONTRIBUTING.md`.
 
 ---
 
@@ -18,7 +18,7 @@ general LLM/agent frameworks, apps, prompt libraries, coding assistants, inferen
 with no AI angle; malware/RAT/C2/phishing builders; anything you cannot judge from the given data.
 When in doubt, `skip`, because precision beats recall.
 
-**Categories** (fixed; see the table in `TEMPLATE.md`). Pick the group, then the category:
+**Categories** (fixed; see the table in `CONTRIBUTING.md`). Pick the group, then the category:
 - Attack AI: `scanners` (LLM red teaming & scanners), `agent-testing` (scan/audit/pentest agents, MCP/A2A, skills),
   `adversarial-ml`, `payloads` (jailbreak & injection payloads, PoCs), `discovery` (find/inventory exposed AI services and agents)
 - Defend AI: `guardrails` (filters, injection detectors, LLM firewalls), `agent-runtime` (MCP gateways, agent sandboxes,

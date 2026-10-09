@@ -2,11 +2,11 @@
 
 Not a maintainer? Open an [Add a tool](https://github.com/omarkurt/ai-security-arsenal/issues/new?template=add-tool.yml) issue instead.
 
-`README.md` is generated. Edit `data/repos.csv`, then run:
+`README.md` is generated. Edit `.github/data/repos.csv`, then run:
 
 ```sh
-python3 scripts/build.py          # needs an authenticated `gh` CLI
-scripts/preview.sh                # optional: render the README the way GitHub does
+python3 .github/scripts/build.py          # needs an authenticated `gh` CLI
+.github/scripts/preview.sh                # optional: render the README the way GitHub does
 ```
 
 ## Rules
@@ -28,14 +28,14 @@ A repo is listed only if **all** of these hold:
 6. **Canonical name.** If a repo moved, use the new `owner/repo`. Archived repos may stay; they get 🗄️.
 7. **Zero `WARN` lines** from `build.py` before committing.
 
-## Row format: `data/repos.csv`
+## Row format: `.github/data/repos.csv`
 
 ```
 category,repo,name,note
 pentest,owner/repo,Display Name,
 ```
 
-- `category`: a `key` from `data/categories.csv`
+- `category`: a `key` from `.github/data/categories.csv`
 - `name`: leave empty to use the repo name
 - `note`: leave empty to use the GitHub description; fill it in to override a bad or empty one
 
@@ -53,7 +53,7 @@ skip,owner/repo,,out of scope: guide/handbook, not a tool
 Pick the **group** first (what the tool is for), then the **category** (what it does). Every tool fits one of these;
 if it seems to fit two, use its primary purpose: a scanner that also blocks goes where most of its features are.
 
-The table is written by `build.py` from `data/categories.csv`, so don't edit it by hand.
+The table is written by `build.py` from `.github/data/categories.csv`, so don't edit it by hand.
 
 <!-- categories:start -->
 | Group | Key | Category | OWASP mapping |
@@ -89,8 +89,8 @@ category, and an explicit decision recorded in the commit message.
 ## Importing bookmarks
 
 ```sh
-python3 scripts/inbox.py ~/Downloads/export.csv   # Raindrop export, or any CSV with a `url` column
+python3 .github/scripts/inbox.py ~/Downloads/export.csv   # Raindrop export, or any CSV with a `url` column
 ```
 
-Prints the GitHub repos not yet in `data/repos.csv` as `TODO,owner/repo,,` rows. Replace `TODO` with a category
+Prints the GitHub repos not yet in `.github/data/repos.csv` as `TODO,owner/repo,,` rows. Replace `TODO` with a category
 (or `skip` plus a reason), paste the rows in, then build.
