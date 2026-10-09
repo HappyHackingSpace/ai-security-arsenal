@@ -108,10 +108,11 @@ def main():
                      shield("updated", date.today().isoformat(), "green", "../../commits/main"),
                      shield("suggest", "a tool", "orange", ISSUE)]), "",
            "</div>", ""]
-    for g in groups:  # TOC: one line per group, category links with tool counts
-        out += [f"**[{g}]({anchor(g)})**<br>", " · ".join(
-            f"[{c['title']}]({anchor(c['title'])})&nbsp;<sup>{len(rows.get(c['key'], []))}</sup>"
-            for c in cats if c["group"] == g), ""]
+    for g in groups:  # TOC: group → categories, with tool counts
+        gc = [c for c in cats if c["group"] == g]
+        out.append(f"- **[{g}]({anchor(g)})** `{sum(len(rows.get(c['key'], [])) for c in gc)}`")
+        out += [f"  - [{c['title']}]({anchor(c['title'])}) `{len(rows.get(c['key'], []))}`" for c in gc]
+    out.append("")
 
     for c in cats:
         if c["group"] in groups:
