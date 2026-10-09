@@ -19,19 +19,19 @@ scanners,NuGuardAI/nuguard,nuguard,
 scanners,m4xx101/cryptex-oss,cryptex-oss,
 scanners,kereva-dev/kereva-scanner,kereva-scanner,
 scanners,dongdongunique/EvoSynth,EvoSynth,
-agents,snyk/agent-scan,Agent Scan (ex mcp-scan),
-agents,cisco-ai-defense/mcp-scanner,MCP Scanner,
-agents,splx-ai/agentic-radar,Agentic Radar,
-agents,aira-security/mcp-armor,MCP Armor (ex mcp-checkpoint),
-agents,NVIDIA/SkillSpector,SkillSpector,
-agents,affaan-m/agentshield,AgentShield,
-agents,getagentseal/agentseal,AgentSeal,
-agents,luckyPipewrench/pipelock,Pipelock,
-agents,MCP-Defender/MCP-Defender,MCP-Defender,
-agents,alexgreensh/repo-forensics,repo-forensics,
-agents,KeyValueSoftwareSystems/agent-opfor,agent-opfor,
-agents,lasso-security/mcp-gateway,Lasso MCP Gateway,
-agents,Agent-Threat-Rule/agent-threat-rules,Agent Threat Rules,
+agent-testing,snyk/agent-scan,Agent Scan (ex mcp-scan),
+agent-testing,cisco-ai-defense/mcp-scanner,MCP Scanner,
+agent-testing,splx-ai/agentic-radar,Agentic Radar,
+agent-runtime,aira-security/mcp-armor,MCP Armor (ex mcp-checkpoint),
+agent-testing,NVIDIA/SkillSpector,SkillSpector,
+agent-testing,affaan-m/agentshield,AgentShield,
+agent-testing,getagentseal/agentseal,AgentSeal,
+agent-runtime,luckyPipewrench/pipelock,Pipelock,
+agent-runtime,MCP-Defender/MCP-Defender,MCP-Defender,
+agent-testing,alexgreensh/repo-forensics,repo-forensics,
+agent-testing,KeyValueSoftwareSystems/agent-opfor,agent-opfor,
+agent-runtime,lasso-security/mcp-gateway,Lasso MCP Gateway,
+agent-runtime,Agent-Threat-Rule/agent-threat-rules,Agent Threat Rules,
 guardrails,NVIDIA-NeMo/Guardrails,NeMo Guardrails,
 guardrails,protectai/llm-guard,LLM Guard,
 guardrails,guardrails-ai/guardrails,Guardrails AI,
@@ -238,7 +238,7 @@ skip,Trusera/ai-bom,,clippings low-confidence discovery: discovers AI agents and
 skip,dn9uy3n/Modern-Red-Team-Infrastructure,,clippings: C2 infrastructure
 reversing,radareorg/radare2-mcp,radare2 MCP,
 skip,JSONbored/awesome-claude,,clippings: general registry
-agents,clawvisor/clawvisor,,
+agent-runtime,clawvisor/clawvisor,,
 skip,w0h1v/mcp-maigret,,clippings: OSINT MCP server
 skip,GAI4SE/LLM4SE,,clippings: general SE list
 skills,awarexone/public-skills-builder,Public Skills Builder,
@@ -280,10 +280,10 @@ skip,nblintao/awesome-claude-code-postleak-insights,,clippings: leak analysis li
 code-audit,LLMAudit/LLMSmartAuditTool,LLM-SmartAudit,
 skip,Dentrax/falco-gpt,,clippings: ops remediation
 skills,yoanbernabeu/supabase-pentest-skills,Supabase Pentest Skills,
-agents,opena2a-org/agent-identity-management,Agent Identity Management,
+agent-runtime,opena2a-org/agent-identity-management,Agent Identity Management,
 skip,ThreatRecall/zettelforge,,clippings: CTI memory not security of AI
 skip,AdamLaurie/raiden-pico,,clippings: hardware project
-agents,ykdojo/cc-safe,,
+agent-testing,ykdojo/cc-safe,,
 skip,shmlkv/dna-claude-analysis,,clippings: genome analysis
 skip,SHADOWPR0/beautiful_prose,,clippings: writing style
 skills,CDSecurity/cdsecurity-skills,CD Security Skills,
@@ -304,9 +304,9 @@ skip,jeiks/Stealing_DL_Models,,clippings low-confidence payloads: model extracti
 skip,MorDavid/Hashcat-MCP,,clippings: generic cracking tool wrapper
 pentest,operantlabs/operant-mcp,Operant MCP,
 skip,badchars/cloud-audit-mcp,,clippings low-confidence pentest: cloud audit MCP for agents
-agents,appsecco/mcp-client-and-proxy,MCP Client and Proxy,
+agent-testing,appsecco/mcp-client-and-proxy,MCP Client and Proxy,
 skip,saasvista/aibom-scanner,,clippings: compliance mapping
-agents,FenriskSecurity/MCPwned,,
+agent-testing,FenriskSecurity/MCPwned,,
 skip,Hacker0x01/hackerone-graphql-mcp-server,,clippings: generic API MCP
 skip,anshumanbh/vulnvibes,,clippings low-confidence code-audit: agent triages vulnerabilities
 skip,martin-wey/R2Vul,,clippings low-confidence code-audit: LLM vuln detection research
@@ -314,7 +314,7 @@ skip,clearseclabs/system-over-model-gemma,,clippings: no data
 skip,Cyreslab-AI/crunchbase-mcp-server,,clippings: not security
 skip,andrew/managing-dependencies,,clippings low-confidence skills: secure dependency skill
 skip,badchars/github-security-mcp,,clippings low-confidence skills: GitHub security MCP for agents
-agents,LLMSecurity/skillguard,,
+agent-testing,LLMSecurity/skillguard,,
 skip,whatiskadudoing/fp-ts-skills,,clippings: not security
 skip,antoninoLorenzo/Ollama-on-Colab-with-ngrok,,clippings: inference notebook
 skip,obra/superpowers,,clippings: general agent dev framework
@@ -340,7 +340,7 @@ skills,cloudflare/security-audit-skill,,
 skip,karpathy/llm-council,,clippings: general LLM app
 skip,SuperClaude-Org/SuperClaude_Framework,,clippings: coding config framework
 skip,agent0ai/agent-zero,,clippings: general agent framework
-agents,NVIDIA/OpenShell,,
+agent-runtime,NVIDIA/OpenShell,,
 skip,microsoft/nni,,clippings: AutoML toolkit
 payloads,0xk1h0/ChatGPT_DAN,,
 skip,Arize-ai/phoenix,,clippings: LLM observability
@@ -386,7 +386,7 @@ skip,hamelsmu/claude-review-loop,,clippings: generic code review plugin
 benchmarks,JailbreakBench/jailbreakbench,,
 skip,Joe-B-Security/awesome-prompt-injection,,"out of scope: curated list, not a tool"
 benchmarks,Tencent/AICGSecEval,,
-agents,provos/ironcurtain,,
+agent-runtime,provos/ironcurtain,,
 skip,raphabot/awesome-cybersecurity-agentic-ai,,"out of scope: curated list, not a tool"
 reversing,Noelo-Lab/kuna,,
 skip,michalparkola/tapestry-skills,,clippings: download skills
@@ -439,7 +439,7 @@ benchmarks,logic-star-ai/baxbench,,
 benchmarks,lucagioacchini/auto-pen-bench,AutoPenBench,
 benchmarks,SaFo-Lab/JailBreakV_28K,,
 payloads,IBM/BadDiffusion,,
-agents,garagon/aguara,,
+agent-testing,garagon/aguara,,
 skip,OwenSanzas/LLM-For-Software-Security,,"out of scope: curated list, not a tool"
 code-audit,seclab-ucr/LLift,,
 skip,tjnull/Ludus-FastMCP,,clippings: cyber range MCP utility
@@ -467,7 +467,7 @@ skip,arian-gogani/nobulex,,clippings low-confidence agents: agent verification a
 labs,c-goosen/ai-prompt-ctf,,
 skip,4vanish/AI-Pentest-Playbook,,"out of scope: guide/handbook, not a tool"
 skip,cosai-oasis/ws3-ai-risk-governance,,clippings low-confidence guides: CoSAI AI risk governance workstream
-agents,hoodoer/MCP-ASD,,
+agent-testing,hoodoer/MCP-ASD,,
 skip,NotMyself/claude-win11-speckit-update-skill,,clippings: unrelated archived
 skills,latiotech/secure-supply-chain-skills,,
 scanners,SOM-Research/LangBiTe,,
@@ -507,7 +507,7 @@ skip,microsoft/semantic-kernel,,clippings: general LLM SDK
 skip,openai/skills,,clippings: general skills catalog
 skip,Donchitos/Claude-Code-Game-Studios,,clippings: game dev agents
 skip,letta-ai/letta,,clippings: general agent platform
-agents,NVIDIA/NemoClaw,,
+agent-runtime,NVIDIA/NemoClaw,,
 skip,danielmiessler/LifeOS,,clippings: personal AI harness
 skip,DataTalksClub/mlops-zoomcamp,,clippings: ML course
 skip,sirmalloc/ccstatusline,,clippings: statusline tool
@@ -546,7 +546,7 @@ skip,rohunvora/x-research-skill,,clippings: research skill
 pentest,xalgorix/xalgorix,,
 skip,getsentry/skills,,clippings: dev skills
 pentest,ASCIT31/Dark-Moon,,
-agents,trailofbits/claude-code-devcontainer,Claude Code Devcontainer,
+agent-runtime,trailofbits/claude-code-devcontainer,Claude Code Devcontainer,
 skip,IBM/differential-privacy-library,,clippings: no LLM angle
 reversing,weirdmachine64/GhidraGPT,,
 reversing,zinja-coder/jadx-mcp-server,JADX MCP Server,
@@ -587,7 +587,7 @@ skip,Xquik-dev/x-twitter-scraper,,clippings: scraper API
 skip,forcesunseen/llm-hackers-handbook,LLM Hackers Handbook,"out of scope: guide/handbook, not a tool"
 payloads,ffhibnese/Model-Inversion-Attack-ToolBox,Model Inversion Attack ToolBox,
 pentest,BugTraceAI/BugTraceAI-CLI,,
-agents,johnhalloran321/mcpSafetyScanner,MCP Safety Scanner,
+agent-testing,johnhalloran321/mcpSafetyScanner,MCP Safety Scanner,
 skip,nezhar/claude-container,,clippings: moved container wrapper
 skip,FlineDev/ContextKit,,clippings: context engineering
 discovery,7WaySecurity/ai_osint,AI OSINT,
@@ -615,7 +615,7 @@ skip,xalgord/AI-System-Prompts,,clippings low-confidence pentest: pentest agent 
 skip,zoomeye-ai/mcp_zoomeye,,clippings: asset search MCP
 skip,fsndzomga/anonLLM,,clippings low-confidence guardrails: PII anonymization for LLM APIs
 labs,HumanCompatibleAI/tensor-trust,Tensor Trust,
-agents,stacklok/brood-box,Brood Box,
+agent-runtime,stacklok/brood-box,Brood Box,
 skip,HeshamFS/materials-simulation-skills,,clippings: science skills
 code-audit,l33tdawg/aether,,
 benchmarks,DeepTempo/socbench,,
@@ -643,7 +643,7 @@ guardrails,opena2a-org/secretless-ai,Secretless AI,
 skip,vulnerability-lookup/VulnAgent,,clippings low-confidence pentest: experimental security agent framework
 skip,sagredo-dev/qmail,,clippings: mail server
 benchmarks,yikun-li/CleanVul,,
-agents,Defend-AI-Tech-Inc/agent-discover-scanner,Agent Discover Scanner,
+discovery,Defend-AI-Tech-Inc/agent-discover-scanner,Agent Discover Scanner,
 skip,TraceFold/tracefold,,clippings: agent undo and receipts
 skip,Talieisin/britfix,,clippings: spelling converter
 skip,False-Positive-Community/open-malicious-code-benchmark,,clippings low-confidence benchmarks: malicious package detection benchmark
@@ -700,7 +700,7 @@ skip,samber/cc-skills-golang,,clippings: general Go skills
 skip,microsoft/skills,,clippings: general SDK skills
 reversing,zinja-coder/jadx-ai-mcp,JADX AI MCP,
 skills,elementalsouls/Claude-OSINT,,
-agents,cisco-ai-defense/skill-scanner,Skill Scanner,
+agent-testing,cisco-ai-defense/skill-scanner,Skill Scanner,
 skip,apify/agent-skills,,clippings: general skills
 skip,Sahir619/fable-method,,clippings: general workflow skills
 skip,vmoranv/jshookmcp,,clippings: generic JS hook toolkit
@@ -725,12 +725,12 @@ skip,karpathy/hn-time-capsule,,clippings: not security
 skip,cckuailong/awesome-gpt-security,,"out of scope: curated list, not a tool"
 skip,JoasASantos/Offensive-Security-AI-Models,,"out of scope: curated list, not a tool"
 code-audit,chris-koch-penn/gpt3_security_vulnerability_scanner,GPT-3 Security Vulnerability Scanner,
-agents,secureagentics/Adrian,,
+agent-runtime,secureagentics/Adrian,,
 skip,aannoo/hcom,,clippings: agent messaging not security
 pentest,westonbrown/Cyber-AutoAgent,,
 pentest,google/mcp-security,Google MCP Security,
 skills,slowmist/slowmist-agent-security,SlowMist Agent Security,
-agents,GoPlusSecurity/agentguard,,
+agent-runtime,GoPlusSecurity/agentguard,,
 reversing,llnl/OGhidra,,
 guardrails,dataiku/kiji-proxy,Kiji Proxy,
 skip,sanjay3290/ai-skills,,clippings: general skills
@@ -740,7 +740,7 @@ pentest,MorDavid/BloodHound-MCP-AI,,
 skip,zxkane/aws-skills,,clippings: general AWS skills
 reversing,cellebrite-labs/ghidra-rpc,,
 skip,ddzipp/AutoAudit,,clippings: cybersecurity LLM fine-tune unclear
-agents,adversa-ai/secureclaw,,
+agent-runtime,adversa-ai/secureclaw,,
 skip,cckuailong/SuperAdapters,,clippings: general finetuning
 skip,ThibautMelen/agentic-ai-systems,,clippings: general agentic patterns
 scanners,praetorian-inc/augustus,,
@@ -755,10 +755,10 @@ skills,jthack/ffuf_claude_skill,ffuf Claude Skill,
 skip,seb1n/awesome-ai-agent-skills,,clippings: general skills
 benchmarks,lakeraai/pint-benchmark,PINT Benchmark,
 skip,juanandresgs/claude-ctrl,,clippings: deprecated general config
-agents,OWASP/www-project-agent-memory-guard,OWASP Agent Memory Guard,
+skip,OWASP/www-project-agent-memory-guard,OWASP Agent Memory Guard,"out of scope: project website repo, not a tool"
 benchmarks,NYU-LLM-CTF/NYU_CTF_Bench,NYU CTF Bench,
 scanners,BCG-X-Official/artkit,,
-agents,cisco-ai-defense/a2a-scanner,A2A Scanner,
+agent-testing,cisco-ai-defense/a2a-scanner,A2A Scanner,
 code-audit,fuzzland/audit_gpt,,
 code-audit,spaceraccoon/vulnerability-spoiler-alert,,
 skip,ElNiak/awesome-ai-cybersecurity,,"out of scope: curated list, not a tool"
@@ -787,7 +787,7 @@ pentest,xpn/mythic_mcp,,
 skip,mouteee/autonomous-offensive-llm-handbook,Autonomous Offensive LLM Handbook,"out of scope: guide/handbook, not a tool"
 skip,hari-sikchi/awesome-ai-safety,,clippings low-confidence lists: AI safety papers list stale
 benchmarks,CS-EVAL/CS-Eval,,
-agents,pic-standard/pic-standard,PIC Standard,
+skip,pic-standard/pic-standard,PIC Standard,"out of scope: standard/spec, not a tool"
 skip,OverseedAI/viwo,,clippings: general agent harness
 guardrails,openai/gpt-oss-safeguard,,
 skip,agenticsorg/agentic-security,,clippings: no description
@@ -806,7 +806,7 @@ skip,edspencer/herdctl,,clippings: general agent runner
 skip,ZENG3LD/session-restore,,clippings: general tool
 skills,wrsmith108/claude-skill-security-auditor,,
 skip,wrsmith108/varlock-claude-skill,,clippings low-confidence skills: secret handling skill for Claude sessions
-agents,inkog-io/inkog,,
+agent-testing,inkog-io/inkog,,
 pentest,BugTraceAI/BugTraceAI-WEB,,
 pentest,ADEOSec/mcp-shodan,,
 guardrails,MaxwellCalkin/sentinel-ai,Sentinel AI,

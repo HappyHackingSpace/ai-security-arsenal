@@ -1,14 +1,15 @@
-key,title,blurb
-scanners,LLM Scanners & Red Teaming,"Tools which probe LLMs / LLM apps for jailbreaks, prompt injection, data leakage and other vulnerabilities."
-agents,"Agent, MCP & Skill Security","Scanners and runtime controls for AI agents, MCP servers, agent skills and tool configs."
-guardrails,Guardrails & Prompt Injection Defense,"Runtime defenses: input/output filtering, prompt-injection and jailbreak detectors, LLM firewalls."
-discovery,AI Asset Discovery & Fingerprinting,"Find and identify exposed LLM services, inference servers and MCP endpoints."
-model,Model & ML Supply-Chain Scanners,"Scan model artifacts (pickle, PyTorch, Keras, …) for malicious code."
-adversarial-ml,Adversarial ML Libraries,Libraries for crafting adversarial examples and evaluating ML model robustness.
-pentest,AI Pentest Agents & Assistants,"Tools which use LLMs to find vulnerabilities in web applications, APIs and infrastructure."
-code-audit,AI Code Auditing & Vulnerability Discovery,"LLM-driven source code review, variant hunting and CVE discovery."
-reversing,AI-Assisted Reverse Engineering,"LLM / MCP integrations for IDA, Ghidra, Binary Ninja, radare2, JADX, Frida and friends."
-skills,Security Skills & Plugins for Coding Agents,"Skill packs / plugins that turn Claude Code, Codex & co. into security assistants."
-payloads,"Payloads, TTPs & Research PoCs","Attack payload collections, technique catalogs and proof-of-concept research code."
-labs,Vulnerable Labs & Playgrounds,Deliberately vulnerable LLM apps / agents / MCP servers to practice against.
-benchmarks,Benchmarks & Datasets,"Datasets and benchmarks for measuring attacks, defenses and AI security agents."
+key,group,title,blurb,owasp_stage,owasp_class,owasp_risks
+scanners,Attack AI,LLM Red Teaming & Scanners,"Probe LLMs and LLM apps for jailbreaks, prompt injection, data leakage and unsafe output.",Test & Evaluate,Red Teaming,"LLM01, LLM02, LLM05, LLM07, LLM10"
+agent-testing,Attack AI,Agent & MCP Security Testing,"Scan, audit and pentest AI agents, MCP / A2A servers, agent skills and agent configs.",Test & Evaluate,Agentic,"ASI01, ASI02, ASI03, ASI04, ASI05"
+adversarial-ml,Attack AI,Adversarial ML,Craft adversarial examples and measure model robustness.,Test & Evaluate,GenAI LLM,LLM04
+payloads,Attack AI,Jailbreak & Injection Payloads,"Payload collections, attack techniques and proof-of-concept code.",Test & Evaluate,Red Teaming,"LLM01, LLM07"
+discovery,Attack AI,AI Asset Discovery,"Find and inventory exposed LLM services, inference servers, MCP endpoints and agents.","Scope & Plan, Govern","GenAI LLM, Agentic",
+guardrails,Defend AI,Guardrails & AI Firewalls,"Input / output filtering, prompt-injection and jailbreak detection, LLM firewalls and gateways.","Deploy, Operate",GenAI LLM,"LLM01, LLM02, LLM05, LLM07"
+agent-runtime,Defend AI,Agent & MCP Runtime Security,"Runtime control for agents: MCP gateways and firewalls, sandboxes, agent identity, detection rules.","Deploy, Operate, Monitor",Agentic,"ASI02, ASI03, ASI05, ASI06, ASI10"
+model,Defend AI,Model & Supply-Chain Security,"Scan model artifacts (pickle, PyTorch, Keras, …) for malicious code.","Develop & Experiment, Release",GenAI LLM,"LLM03, LLM04, ASI04"
+pentest,Hack with AI,AI Pentest Agents,"LLM agents and assistants that test web apps, APIs and infrastructure.",,,
+code-audit,Hack with AI,AI Code Auditing,"LLM-driven source code review, variant hunting and vulnerability discovery.",,,
+reversing,Hack with AI,AI Reverse Engineering,"LLM / MCP integrations for IDA, Ghidra, Binary Ninja, radare2, JADX, Frida and friends.",,,
+skills,Hack with AI,Security Skills for Coding Agents,"Skill packs and plugins that turn Claude Code, Codex & co. into security assistants.",,,
+labs,Practice & Measure,Vulnerable AI Labs,"Deliberately vulnerable LLM apps, agents and MCP servers to practice against.",Test & Evaluate,Red Teaming,
+benchmarks,Practice & Measure,Benchmarks & Datasets,"Datasets and benchmarks for measuring attacks, defenses and AI security agents.",Test & Evaluate,Red Teaming,

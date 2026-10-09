@@ -46,14 +46,43 @@ Keep it in the file with category `skip` and the reason in `note`. Skipped rows 
 skip,owner/repo,,out of scope: guide/handbook, not a tool
 ```
 
-## New category: `data/categories.csv`
+## Categories (fixed)
 
-```
-key,title,blurb
-my-key,Section Title,One sentence on what belongs here.
-```
+Pick the **group** first (what the tool is for), then the **category** (what it does). Every tool fits one of these;
+if it seems to fit two, use its primary purpose: a scanner that also blocks goes where most of its features are.
 
-Row order is the README order. Add a category only when at least 3 tools need it.
+The table is written by `build.py` from `data/categories.csv`, so don't edit it by hand.
+
+<!-- categories:start -->
+| Group | Key | Category | OWASP mapping |
+| --- | --- | --- | --- |
+| Attack AI | `scanners` | LLM Red Teaming & Scanners | stage *Test & Evaluate* · landscape *Red Teaming* · risks LLM01, LLM02, LLM05, LLM07, LLM10 |
+| Attack AI | `agent-testing` | Agent & MCP Security Testing | stage *Test & Evaluate* · landscape *Agentic* · risks ASI01, ASI02, ASI03, ASI04, ASI05 |
+| Attack AI | `adversarial-ml` | Adversarial ML | stage *Test & Evaluate* · landscape *GenAI LLM* · risks LLM04 |
+| Attack AI | `payloads` | Jailbreak & Injection Payloads | stage *Test & Evaluate* · landscape *Red Teaming* · risks LLM01, LLM07 |
+| Attack AI | `discovery` | AI Asset Discovery | stage *Scope & Plan, Govern* · landscape *GenAI LLM, Agentic* |
+| Defend AI | `guardrails` | Guardrails & AI Firewalls | stage *Deploy, Operate* · landscape *GenAI LLM* · risks LLM01, LLM02, LLM05, LLM07 |
+| Defend AI | `agent-runtime` | Agent & MCP Runtime Security | stage *Deploy, Operate, Monitor* · landscape *Agentic* · risks ASI02, ASI03, ASI05, ASI06, ASI10 |
+| Defend AI | `model` | Model & Supply-Chain Security | stage *Develop & Experiment, Release* · landscape *GenAI LLM* · risks LLM03, LLM04, ASI04 |
+| Hack with AI | `pentest` | AI Pentest Agents | — (AI for security; outside the OWASP GenAI landscape) |
+| Hack with AI | `code-audit` | AI Code Auditing | — (AI for security; outside the OWASP GenAI landscape) |
+| Hack with AI | `reversing` | AI Reverse Engineering | — (AI for security; outside the OWASP GenAI landscape) |
+| Hack with AI | `skills` | Security Skills for Coding Agents | — (AI for security; outside the OWASP GenAI landscape) |
+| Practice & Measure | `labs` | Vulnerable AI Labs | stage *Test & Evaluate* · landscape *Red Teaming* |
+| Practice & Measure | `benchmarks` | Benchmarks & Datasets | stage *Test & Evaluate* · landscape *Red Teaming* |
+<!-- categories:end -->
+
+How the mapping works:
+- **stage** is the nearest lifecycle stage in the [OWASP GenAI Security Solutions Landscape](https://genai.owasp.org/ai-security-solutions-landscape)
+  (Scope & Plan, Augm & Fine Tune Data, Develop & Experiment, Test & Evaluate, Release, Deploy, Operate, Monitor, Govern)
+- **landscape** is the landscape's solution class: GenAI LLM, Agentic or Red Teaming
+- **risks** are the [OWASP Top 10 for LLM Applications 2025](https://genai.owasp.org/llm-top-10/) (`LLM01`–`LLM10`) and the
+  OWASP Top 10 for Agentic Applications 2026 (`ASI01`–`ASI10`) items the category mainly addresses
+- **Hack with AI** categories have no OWASP GenAI equivalent: they use AI *for* security instead of securing AI
+
+**The category list is frozen.** Do not add, rename or split categories when adding tools. A change needs all of:
+an OWASP stage + class it maps to (or a clear AI-for-security purpose), at least 10 listed tools that fit no existing
+category, and an explicit decision recorded in the commit message.
 
 ## Importing bookmarks
 

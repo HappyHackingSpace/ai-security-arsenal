@@ -52,6 +52,15 @@ def badges(repo):
             f"[![Stars]({sh}/stars/{repo})]({gh}/stargazers)")
 
 
+def owasp(c):
+    if not c["owasp_stage"]:
+        return "— (AI for security; outside the OWASP GenAI landscape)"
+    parts = [f"stage *{c['owasp_stage']}*", f"landscape *{c['owasp_class']}*"]
+    if c["owasp_risks"]:
+        parts.append(f"risks {c['owasp_risks']}")
+    return " · ".join(parts)
+
+
 def main():
     cats = load("categories.csv")
     keys = {c["key"] for c in cats} | {"skip"}
@@ -87,11 +96,16 @@ def main():
            f"- GitHub only, at least {MIN_STARS} stars; 🗄️ = archived",
            "- Tools only, no articles or standards. To add one, see [TEMPLATE.md](TEMPLATE.md)", "",
            "## Contents", ""]
-    out += [f"- [{c['title']}]({anchor(c['title'])})" for c in cats]
+    groups = list(dict.fromkeys(c["group"] for c in cats))
+    for g in groups:
+        out.append(f"- [{g}]({anchor(g)})")
+        out += [f"  - [{c['title']}]({anchor(c['title'])})" for c in cats if c["group"] == g]
     out.append("")
 
     for c in cats:
-        out += [f"## {c['title']}", "", c["blurb"], "",
+        if c["group"] in groups:
+            out += [f"## {groups.pop(0)}", ""]
+        out += [f"### {c['title']}", "", c["blurb"], "", f"OWASP: {owasp(c)}", "",
                 "| Project | Description | Last Commit | Committers | Stars |",
                 "| --- | --- | --- | --- | --- |"]
         for r, m in sorted(rows.get(c["key"], []), key=lambda x: x[1]["last_commit"], reverse=True):
@@ -105,6 +119,18 @@ def main():
             "Details in [TEMPLATE.md](TEMPLATE.md).", ""]
     (ROOT / "README.md").write_text("\n".join(out))
     print(f"README.md: {sum(map(len, rows.values()))} repos", file=sys.stderr)
+
+    # Keep the category table in TEMPLATE.md in sync with data/categories.csv.
+    table = ["| Group | Key | Category | OWASP mapping |", "| --- | --- | --- | --- |"]
+    table += [f"| {c['group']} | `{c['key']}` | {c['title']} | {owasp(c)} |" for c in cats]
+    tpl = ROOT / "TEMPLATE.md"
+    text = tpl.read_text()
+    start, end = "<!-- categories:start -->", "<!-- categories:end -->"
+    if start in text and end in text:
+        head, rest = text.split(start, 1)
+        tpl.write_text(head + start + "\n" + "\n".join(table) + "\n" + end + rest.split(end, 1)[1])
+    else:
+        warn("TEMPLATE.md: category markers missing — table not updated")
 
 
 if __name__ == "__main__":

@@ -18,12 +18,15 @@ general LLM/agent frameworks, apps, prompt libraries, coding assistants, inferen
 with no AI angle; malware/RAT/C2/phishing builders; anything you cannot judge from the given data.
 When in doubt, `skip`, because precision beats recall.
 
-**Categories:** `scanners` (LLM scanners & red teaming), `agents` (agent/MCP/skill security), `guardrails`,
-`discovery` (finding exposed AI services), `model` (model/ML supply chain), `adversarial-ml` (adversarial example /
-robustness libraries), `pentest` (AI pentest agents & assistants), `code-audit` (AI code auditing & vuln discovery),
-`reversing` (LLM/MCP integrations for IDA, Ghidra, radare2, JADX, Frida…), `skills` (security skills/plugins for
-coding agents), `payloads` (payloads, TTPs, research PoCs), `labs` (vulnerable apps/playgrounds),
-`benchmarks` (datasets/benchmarks).
+**Categories** (fixed; see the table in `TEMPLATE.md`). Pick the group, then the category:
+- Attack AI: `scanners` (LLM red teaming & scanners), `agent-testing` (scan/audit/pentest agents, MCP/A2A, skills),
+  `adversarial-ml`, `payloads` (jailbreak & injection payloads, PoCs), `discovery` (find/inventory exposed AI services and agents)
+- Defend AI: `guardrails` (filters, injection detectors, LLM firewalls), `agent-runtime` (MCP gateways, agent sandboxes,
+  agent identity, detection rules), `model` (model / ML supply-chain scanning)
+- Hack with AI: `pentest`, `code-audit`, `reversing`, `skills` (security skills/plugins for coding agents)
+- Practice & Measure: `labs` (vulnerable apps/playgrounds), `benchmarks` (datasets/benchmarks)
+
+Never invent a category; if nothing fits, `skip`.
 
 **Output** one CSV row per input item, no header, no commentary:
 `category,owner/repo,Display Name,confidence,reason`
