@@ -10,6 +10,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 MIN_STARS = 10
+ISSUE = "https://github.com/omarkurt/ai-security-arsenal/issues/new?template=add-tool.yml"
 
 
 def load(name):
@@ -94,7 +95,8 @@ def main():
            "Open source tools for AI security: attack AI, defend AI, hack with AI.", "",
            f"- {sum(map(len, rows.values()))} tools in {len(cats)} categories, each sorted by last commit",
            f"- GitHub only, at least {MIN_STARS} stars; 🗄️ = archived",
-           "- Tools only, no articles or standards. To add one, see [TEMPLATE.md](TEMPLATE.md)", "",
+           "- Tools only, no articles or standards",
+           f"- Know a tool that's missing? [Suggest it with an issue]({ISSUE}), or see [TEMPLATE.md](TEMPLATE.md) to open a PR", "",
            "## Contents", ""]
     groups = list(dict.fromkeys(c["group"] for c in cats))
     for g in groups:
@@ -115,7 +117,7 @@ def main():
                        f"{short(r['note'] or m['description'])} | {badges(m['full_name'])} |")
         out.append("")
 
-    out += ["## Contribute", "", "Suggest a tool with the [Add a tool](../../issues/new?template=add-tool.yml) issue form, or open a PR: "
+    out += ["## Contribute", "", f"Suggest a tool with the [Add a tool]({ISSUE}) issue form, or open a PR: "
             "add a row to `data/repos.csv` and run `python3 scripts/build.py`. Details in [TEMPLATE.md](TEMPLATE.md).", ""]
     (ROOT / "README.md").write_text("\n".join(out))
     print(f"README.md: {sum(map(len, rows.values()))} repos", file=sys.stderr)

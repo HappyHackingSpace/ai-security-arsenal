@@ -4,7 +4,8 @@ Open source tools for AI security: attack AI, defend AI, hack with AI.
 
 - 362 tools in 14 categories, each sorted by last commit
 - GitHub only, at least 10 stars; 🗄️ = archived
-- Tools only, no articles or standards. To add one, see [TEMPLATE.md](TEMPLATE.md)
+- Tools only, no articles or standards
+- Know a tool that's missing? [Suggest it with an issue](https://github.com/omarkurt/ai-security-arsenal/issues/new?template=add-tool.yml), or see [TEMPLATE.md](TEMPLATE.md) to open a PR
 
 ## Contents
 
@@ -525,4 +526,4 @@ OWASP: stage *Test & Evaluate* · landscape *Red Teaming*
 
 ## Contribute
 
-Suggest a tool with the [Add a tool](../../issues/new?template=add-tool.yml) issue form, or open a PR: add a row to `data/repos.csv` and run `python3 scripts/build.py`. Details in [TEMPLATE.md](TEMPLATE.md).
+Suggest a tool with the [Add a tool](https://github.com/omarkurt/ai-security-arsenal/issues/new?template=add-tool.yml) issue form, or open a PR: add a row to `data/repos.csv` and run `python3 scripts/build.py`. Details in [TEMPLATE.md](TEMPLATE.md).
