@@ -1,10 +1,13 @@
 # ai-security-arsenal
 
-- Scope: AI security **tools** only (attack AI / defend AI / hack with AI). No articles, standards, guides, handbooks or curated lists. Full rules: `CONTRIBUTING.md` → Rules.
-- Categories are **frozen** (4 groups / 14 categories, each mapped to OWASP GenAI landscape stage + class + Top 10 risks in `.github/data/categories.csv`). Don't add or split categories while adding tools; see `CONTRIBUTING.md` → Categories.
-- `README.md` is generated — never edit it by hand. Source of truth: `.github/data/categories.csv`, `.github/data/repos.csv`; render with `python3 .github/scripts/build.py`.
+- Scope: AI security **tools** only (attack AI / defend AI / hack with AI). No articles, standards, guides, handbooks or curated lists. Public rules: `.github/CONTRIBUTING.md` → Rules. A generic security tool with no AI angle, or a generic AI tool with no security angle, does not qualify.
+- Categories are **frozen** (4 groups / 14 categories in `.github/data/categories.csv`). Don't add, rename or split categories while adding tools. A change needs: an OWASP stage + class it maps to (or a clear AI-for-security purpose), ≥10 listed tools that fit no existing category, and the decision recorded in the commit message. If a tool fits two categories, use its primary purpose.
+- OWASP mapping columns in `categories.csv`: `owasp_stage` = nearest stage of the [OWASP GenAI Security Solutions Landscape](https://genai.owasp.org/ai-security-solutions-landscape); `owasp_class` = GenAI LLM / Agentic / Red Teaming; `owasp_risks` = LLM01–10 (LLM Top 10 2025) / ASI01–10 (Agentic Top 10 2026) the category mainly addresses. Hack with AI has none (AI *for* security).
+- `README.md` and the category table in `CONTRIBUTING.md` are generated — never edit them by hand. Source of truth: `.github/data/categories.csv`, `.github/data/repos.csv`; render with `python3 .github/scripts/build.py` (needs `gh` auth). Commit only with zero `WARN` lines.
+- `repos.csv` row: `category,repo,name,note` — `name` empty = repo name; `note` empty = GitHub description (fill to override a bad one). Use the canonical `owner/repo` if moved; archived repos may stay (🗄️).
+- Rejected / moved / duplicate repos stay in `repos.csv` with category `skip` and a reason in `note` (e.g. `skip,owner/repo,,out of scope: guide/handbook, not a tool`), so the inbox doesn't resurface them.
 - Issues → PRs: `issue-to-pr.yml` runs `.github/scripts/issue.py` (issue body is untrusted: env only, never `${{ }}` in `run:`); `build.yml` rebuilds README on push to main + weekly. Check workflow changes with `uvx zizmor --offline .github/workflows/`.
 - Update flow: `python3 .github/scripts/inbox.py <raindrop.csv>` → categorize the `TODO` rows → build → fix every `WARN`.
-- Obsidian `Clippings/` sweep: keyword pre-filter + `gh` metadata (≥10★, not already in `.github/data/`), then classify into the fixed categories using the rules in `.github/CONTRIBUTING.md`. high/medium → listed; low → `skip` with note `clippings low-confidence <cat>: …` (candidates to promote by hand).
-- Rejected / moved / duplicate repos stay in `repos.csv` with category `skip` and a reason in `note`, so the inbox doesn't resurface them.
+- Obsidian `Clippings/` sweep: keyword pre-filter + `gh` metadata (≥10★, not already in `.github/data/`), then classify into the fixed categories using these rules. high/medium → listed; low → `skip` with note `clippings low-confidence <cat>: …` (candidates to promote by hand).
+- Search site: `.github/site/index.html` reads `tools.json`, which `build.py` writes (gitignored). Preview: `python3 -m http.server -d .github/site`. README preview: `.github/scripts/preview.sh`.
 - Stdlib-only Python + `gh` CLI; no new dependencies.

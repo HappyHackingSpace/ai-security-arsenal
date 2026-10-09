@@ -1,10 +1,12 @@
-# Regenerate README.md (counts, star order, badges) after data changes, and weekly to refresh stars.
+# Regenerate README.md (counts, star order, badges) and the search site's tools.json after data or site
+# changes, and weekly to refresh stars. The site deploys to GitHub Pages only while the repo is public
+# (the org plan has no Pages for private repos); Settings → Pages → Source must be "GitHub Actions".
 name: Build README
 
 on:
   push:
     branches: [main]
-    paths: [.github/data/**, .github/scripts/build.py]
+    paths: [.github/data/**, .github/scripts/build.py, .github/site/**]
   schedule:
     - cron: "17 5 * * 1"
   workflow_dispatch:
@@ -21,6 +23,8 @@ jobs:
     timeout-minutes: 10
     permissions:
       contents: write # commit the regenerated README.md to main
+    outputs:
+      public: ${{ steps.vis.outputs.public }}
     env:
       GH_TOKEN: ${{ github.token }}
     steps:
@@ -39,3 +43,26 @@ jobs:
           git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
           git commit -qam "Rebuild README"
           git push -q origin HEAD:main
+
+      - id: vis
+        run: echo "public=$(gh api "repos/$GITHUB_REPOSITORY" --jq '.private | not')" >> "$GITHUB_OUTPUT"
+
+      - if: steps.vis.outputs.public == 'true'
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          path: .github/site
+
+  pages:
+    if: needs.build.outputs.public == 'true'
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write # publish the site
+      id-token: write # verify the deployment's origin
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1

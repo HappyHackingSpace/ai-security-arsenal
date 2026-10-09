@@ -134,7 +134,7 @@ def main():
     out = ['<div align="center">', "", '<img alt="AI Security Arsenal: open source tools to attack, defend and hack with AI" '
            'src=".github/assets/banner.svg" width="100%">', "",
            " ".join([shield("tools", str(total), "blue", anchor(groups[0])),
-                     shield("categories", str(len(cats)), "blue", ".github/CONTRIBUTING.md#categories-fixed"),
+                     shield("categories", str(len(cats)), "blue", ".github/CONTRIBUTING.md#categories"),
                      shield("updated", date.today().isoformat(), "green", "../../commits/main"),
                      shield("suggest", "a tool", "orange", ISSUE)]), "",
            "</div>", ""]
@@ -160,11 +160,21 @@ def main():
         out += ["", '<div align="right"><a href="#top">↑ back to top</a></div>', ""]
 
     (ROOT / "README.md").write_text("\n".join(out))
+
+    # Data for the search site (.github/site/index.html); generated, not committed.
+    site = {"generated": date.today().isoformat(),
+            "categories": [{**{k: c[k] for k in ("key", "group", "title", "blurb", "owasp_stage", "owasp_class")},
+                            "risks": [x.strip() for x in c["owasp_risks"].split(",") if x.strip()]} for c in cats],
+            "tools": [{"name": r["name"] or m["full_name"].split("/")[1], "repo": m["full_name"], "cat": key,
+                       "desc": " ".join((r["note"] or m["description"] or "").split()), "stars": m["stargazers_count"],
+                       "archived": m["archived"], "pushed": m["last_commit"][:10]}
+                      for key, items in rows.items() for r, m in items]}
+    (ROOT / ".github" / "site" / "tools.json").write_text(json.dumps(site, ensure_ascii=False, separators=(",", ":")))
     print(f"README.md: {sum(map(len, rows.values()))} repos", file=sys.stderr)
 
     # Keep the category table in CONTRIBUTING.md in sync with .github/data/categories.csv.
-    table = ["| Group | Key | Category | OWASP mapping |", "| --- | --- | --- | --- |"]
-    table += [f"| {c['group']} | `{c['key']}` | {c['title']} | {owasp(c)} |" for c in cats]
+    table = ["| Group | Category |", "| --- | --- |"]
+    table += [f"| {c['group']} | {c['title']} |" for c in cats]
     tpl = ROOT / ".github" / "CONTRIBUTING.md"
     text = tpl.read_text()
     start, end = "<!-- categories:start -->", "<!-- categories:end -->"

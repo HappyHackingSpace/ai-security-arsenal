@@ -2,7 +2,7 @@
 
 <img alt="AI Security Arsenal: open source tools to attack, defend and hack with AI" src=".github/assets/banner.svg" width="100%">
 
-[![tools](https://img.shields.io/badge/tools-363-blue)](#attack-ai) [![categories](https://img.shields.io/badge/categories-14-blue)](.github/CONTRIBUTING.md#categories-fixed) [![updated](https://img.shields.io/badge/updated-2026--10--09-green)](../../commits/main) [![suggest](https://img.shields.io/badge/suggest-a%20tool-orange)](https://github.com/HappyHackingSpace/ai-security-arsenal/issues/new?template=add-tool.yml)
+[![tools](https://img.shields.io/badge/tools-363-blue)](#attack-ai) [![categories](https://img.shields.io/badge/categories-14-blue)](.github/CONTRIBUTING.md#categories) [![updated](https://img.shields.io/badge/updated-2026--10--09-green)](../../commits/main) [![suggest](https://img.shields.io/badge/suggest-a%20tool-orange)](https://github.com/HappyHackingSpace/ai-security-arsenal/issues/new?template=add-tool.yml)
 
 </div>
 
