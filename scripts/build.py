@@ -108,6 +108,7 @@ def main():
                      shield("updated", date.today().isoformat(), "green", "../../commits/main"),
                      shield("suggest", "a tool", "orange", ISSUE)]), "",
            "</div>", ""]
+    out += ["## Contents", ""]
     for g in groups:  # TOC: group → categories, with tool counts
         gc = [c for c in cats if c["group"] == g]
         out.append(f"- **[{g}]({anchor(g)})** `{sum(len(rows.get(c['key'], [])) for c in gc)}`")
