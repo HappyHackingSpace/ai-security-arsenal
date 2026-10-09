@@ -106,9 +106,6 @@ def main():
                      shield("updated", date.today().isoformat(), "green", "../../commits/main"),
                      shield("suggest", "a tool", "orange", ISSUE)]), "",
            " · ".join(f"[{g}]({anchor(g)})" for g in groups), "", "</div>", "",
-           f"Tools only, no articles or standards. GitHub repos with at least {MIN_STARS} stars, "
-           "each category sorted by last commit; 🗄️ = archived. "
-           f"Missing one? [Suggest it]({ISSUE}).", "",
            "## Contents", "", "| Group | Category | Tools |", "| --- | --- | --: |"]
     for g in groups:
         out += [f"| {g if i == 0 else ''} | [{c['title']}]({anchor(c['title'])}) | {len(rows.get(c['key'], []))} |"

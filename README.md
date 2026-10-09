@@ -11,8 +11,6 @@
 
 </div>
 
-Tools only, no articles or standards. GitHub repos with at least 10 stars, each category sorted by last commit; 🗄️ = archived. Missing one? [Suggest it](https://github.com/omarkurt/ai-security-arsenal/issues/new?template=add-tool.yml).
-
 ## Contents
 
 | Group | Category | Tools |
