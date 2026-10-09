@@ -1,0 +1,14 @@
+key,title,blurb
+scanners,LLM Scanners & Red Teaming,"Tools which probe LLMs / LLM apps for jailbreaks, prompt injection, data leakage and other vulnerabilities."
+agents,"Agent, MCP & Skill Security","Scanners and runtime controls for AI agents, MCP servers, agent skills and tool configs."
+guardrails,Guardrails & Prompt Injection Defense,"Runtime defenses: input/output filtering, prompt-injection and jailbreak detectors, LLM firewalls."
+discovery,AI Asset Discovery & Fingerprinting,"Find and identify exposed LLM services, inference servers and MCP endpoints."
+model,Model & ML Supply-Chain Scanners,"Scan model artifacts (pickle, PyTorch, Keras, …) for malicious code."
+adversarial-ml,Adversarial ML Libraries,Libraries for crafting adversarial examples and evaluating ML model robustness.
+pentest,AI Pentest Agents & Assistants,"Tools which use LLMs to find vulnerabilities in web applications, APIs and infrastructure."
+code-audit,AI Code Auditing & Vulnerability Discovery,"LLM-driven source code review, variant hunting and CVE discovery."
+reversing,AI-Assisted Reverse Engineering,"LLM / MCP integrations for IDA, Ghidra, Binary Ninja, radare2, JADX, Frida and friends."
+skills,Security Skills & Plugins for Coding Agents,"Skill packs / plugins that turn Claude Code, Codex & co. into security assistants."
+payloads,"Payloads, TTPs & Research PoCs","Attack payload collections, technique catalogs and proof-of-concept research code."
+labs,Vulnerable Labs & Playgrounds,Deliberately vulnerable LLM apps / agents / MCP servers to practice against.
+benchmarks,Benchmarks & Datasets,"Datasets and benchmarks for measuring attacks, defenses and AI security agents."
