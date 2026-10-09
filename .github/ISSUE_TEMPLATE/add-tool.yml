@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Tools only: no articles, standards, guides or curated lists. Full rules are in [CONTRIBUTING.md](https://github.com/HappyHackingSpace/ai-security-arsenal/blob/main/.github/CONTRIBUTING.md).
+        Tools only: no articles, standards, guides or curated lists. A bot checks the repo and opens a pull request; a maintainer reviews it. Full rules are in [CONTRIBUTING.md](https://github.com/HappyHackingSpace/ai-security-arsenal/blob/main/.github/CONTRIBUTING.md).
   - type: input
     id: repo
     attributes:
@@ -35,14 +35,6 @@ body:
         - "Hack with AI / skills: Security Skills for Coding Agents"
         - "Practice & Measure / labs: Vulnerable AI Labs"
         - "Practice & Measure / benchmarks: Benchmarks & Datasets"
-        - "Not sure"
-    validations:
-      required: true
-  - type: textarea
-    id: why
-    attributes:
-      label: What does it do?
-      description: One or two sentences. Why is it an AI security tool?
     validations:
       required: true
   - type: checkboxes

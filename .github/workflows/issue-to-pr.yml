@@ -1,0 +1,66 @@
+# "Add a tool" issue → validated repos.csv row → pull request. Merging the PR closes the issue;
+# build.yml then regenerates README.md.
+# Security: the issue body is attacker-controlled. It reaches only issue.py via env (never `${{ }}` in
+# a run: script); everything passed on to the shell is regex-validated or comes from the GitHub API.
+name: Issue to PR
+
+on:
+  issues:
+    types: [opened, edited]
+
+permissions: {}
+
+concurrency:
+  group: issue-${{ github.event.issue.number }}
+  cancel-in-progress: true
+
+jobs:
+  pr:
+    if: github.event.issue.state == 'open' && contains(github.event.issue.labels.*.name, 'new tool')
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write # push the add-tool/issue-N branch
+      pull-requests: write # open / update / close the PR
+      issues: write # comment and label on rejection
+    env:
+      GH_TOKEN: ${{ github.token }}
+      N: ${{ github.event.issue.number }}
+      BRANCH: add-tool/issue-${{ github.event.issue.number }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: main
+          persist-credentials: false
+
+      - id: check
+        continue-on-error: true # a rejection is an expected outcome, not a failed run
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: python3 .github/scripts/issue.py
+
+      - name: Open or update the PR
+        if: steps.check.outcome == 'success'
+        env:
+          REPO: ${{ steps.check.outputs.repo }}
+        run: |
+          printf '\nCloses #%s\n' "$N" >> "$RUNNER_TEMP/body.md"
+          gh auth setup-git
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$BRANCH"
+          git commit -qam "Add $REPO" -m "Closes #$N"
+          git push -qf origin "$BRANCH"
+          if [ "$(gh pr list --head "$BRANCH" --state open --json number --jq length)" = 0 ]; then
+            gh pr create --base main --head "$BRANCH" --title "Add $REPO" --body-file "$RUNNER_TEMP/body.md"
+          else
+            gh pr edit "$BRANCH" --title "Add $REPO" --body-file "$RUNNER_TEMP/body.md"
+          fi
+          gh issue edit "$N" --remove-label invalid || true
+
+      - name: Explain the rejection
+        if: steps.check.outcome == 'failure'
+        run: |
+          gh issue comment "$N" --body-file "$RUNNER_TEMP/body.md"
+          gh issue edit "$N" --add-label invalid
+          gh pr close "$BRANCH" --delete-branch 2>/dev/null || true

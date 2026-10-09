@@ -1,6 +1,9 @@
 # Adding a tool
 
 Not a maintainer? Open an [Add a tool](https://github.com/HappyHackingSpace/ai-security-arsenal/issues/new?template=add-tool.yml) issue instead.
+A bot (`.github/workflows/issue-to-pr.yml`) checks the repo (exists, ≥10★, not already listed or skipped) and opens a
+PR that adds one row to `repos.csv`; rejections are explained on the issue. Merging the PR closes the issue, and
+`build.yml` regenerates `README.md` on every data change and weekly to refresh stars.
 
 `README.md` is generated. Edit `.github/data/repos.csv`, then run:
 

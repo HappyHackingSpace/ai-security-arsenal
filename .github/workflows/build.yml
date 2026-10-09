@@ -1,0 +1,41 @@
+# Regenerate README.md (counts, star order, badges) after data changes, and weekly to refresh stars.
+name: Build README
+
+on:
+  push:
+    branches: [main]
+    paths: [.github/data/**, .github/scripts/build.py]
+  schedule:
+    - cron: "17 5 * * 1"
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: build
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write # commit the regenerated README.md to main
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: main
+          persist-credentials: false
+
+      - run: python3 .github/scripts/build.py 2>&1 | sed 's/^WARN /::warning::/'; exit "${PIPESTATUS[0]}"
+
+      - name: Commit if changed
+        run: |
+          git diff --quiet && exit 0
+          gh auth setup-git
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git commit -qam "Rebuild README"
+          git push -q origin HEAD:main

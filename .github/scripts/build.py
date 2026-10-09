@@ -19,19 +19,37 @@ def load(name):
         return list(csv.DictReader(f))
 
 
-QUERY = """query($o:String!,$n:String!){repository(owner:$o,name:$n){
-  full_name:nameWithOwner stargazers_count:stargazerCount archived:isArchived description
-  defaultBranchRef{target{...on Commit{committedDate}}}}}"""
+FIELDS = """full_name:nameWithOwner stargazers_count:stargazerCount archived:isArchived description
+  defaultBranchRef{target{...on Commit{committedDate}}}"""
 
 
-def meta(repo):
-    owner, name = repo.split("/")
-    r = subprocess.run(["gh", "api", "graphql", "-f", f"query={QUERY}", "-f", f"o={owner}", "-f", f"n={name}"],
-                       capture_output=True, text=True)
-    m = (json.loads(r.stdout or "{}").get("data") or {}).get("repository")
-    if m:  # empty repos have no default branch
-        m["last_commit"] = ((m.pop("defaultBranchRef") or {}).get("target") or {}).get("committedDate", "")
-    return m
+def meta_batch(repos):
+    """Metadata for up to ~50 repos in one GraphQL query (GITHUB_TOKEN allows 1000 points/hour); None if missing."""
+    decl, body, args = [], [], []
+    for i, repo in enumerate(repos):
+        owner, name = repo.split("/")
+        decl.append(f"$o{i}:String!,$n{i}:String!")
+        body.append(f"r{i}:repository(owner:$o{i},name:$n{i}){{{FIELDS}}}")
+        args += ["-f", f"o{i}={owner}", "-f", f"n{i}={name}"]
+    query = f"query({','.join(decl)}){{{' '.join(body)}}}"
+    r = subprocess.run(["gh", "api", "graphql", "-f", f"query={query}", *args], capture_output=True, text=True)
+    resp = json.loads(r.stdout or "{}")
+    errors = [e for e in resp.get("errors", []) if e.get("type") != "NOT_FOUND"]
+    if errors or not resp.get("data"):  # never treat an API failure as "repo gone"
+        sys.exit(f"gh api graphql failed: {errors or r.stderr.strip()}")
+    out = []
+    for i in range(len(repos)):
+        m = resp["data"].get(f"r{i}")
+        if m:  # empty repos have no default branch
+            m["last_commit"] = ((m.pop("defaultBranchRef") or {}).get("target") or {}).get("committedDate", "")
+        out.append(m)
+    return out
+
+
+def metas(repos, size=50):
+    chunks = [repos[i:i + size] for i in range(0, len(repos), size)]
+    with ThreadPoolExecutor(4) as ex:
+        return dict(zip(repos, [m for ms in ex.map(meta_batch, chunks) for m in ms]))
 
 
 def warn(msg):
@@ -82,12 +100,11 @@ def main():
         if r["category"] not in keys:
             warn(f"unknown category {r['category']!r} for {r['repo']}")
 
-    with ThreadPoolExecutor(8) as ex:
-        metas = dict(zip([r["repo"] for r in repos], ex.map(meta, [r["repo"] for r in repos])))
+    meta = metas([r["repo"] for r in repos])
 
     rows = {}
     for r in repos:
-        m = metas[r["repo"]]
+        m = meta[r["repo"]]
         if m is None:
             warn(f"{r['repo']}: not found (404) — move to skip"); continue
         if m["full_name"].lower() != r["repo"].lower():
