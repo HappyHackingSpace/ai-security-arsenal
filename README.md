@@ -2,7 +2,7 @@
 
 <img alt="AI Security Arsenal: open source tools to attack, defend and hack with AI" src=".github/assets/banner.svg" width="100%">
 
-[![tools](https://img.shields.io/badge/tools-362-blue)](#attack-ai) [![categories](https://img.shields.io/badge/categories-14-blue)](.github/CONTRIBUTING.md#categories-fixed) [![updated](https://img.shields.io/badge/updated-2026--10--09-green)](../../commits/main) [![suggest](https://img.shields.io/badge/suggest-a%20tool-orange)](https://github.com/HappyHackingSpace/ai-security-arsenal/issues/new?template=add-tool.yml)
+[![tools](https://img.shields.io/badge/tools-363-blue)](#attack-ai) [![categories](https://img.shields.io/badge/categories-14-blue)](.github/CONTRIBUTING.md#categories-fixed) [![updated](https://img.shields.io/badge/updated-2026--10--09-green)](../../commits/main) [![suggest](https://img.shields.io/badge/suggest-a%20tool-orange)](https://github.com/HappyHackingSpace/ai-security-arsenal/issues/new?template=add-tool.yml)
 
 </div>
 
@@ -18,8 +18,8 @@
   - [Guardrails & AI Firewalls](#guardrails--ai-firewalls) `24`
   - [Agent & MCP Runtime Security](#agent--mcp-runtime-security) `15`
   - [Model & Supply-Chain Security](#model--supply-chain-security) `6`
-- **[Hack with AI](#hack-with-ai)** `176`
-  - [AI Pentest Agents](#ai-pentest-agents) `63`
+- **[Hack with AI](#hack-with-ai)** `177`
+  - [AI Pentest Agents](#ai-pentest-agents) `64`
   - [AI Code Auditing](#ai-code-auditing) `42`
   - [AI Reverse Engineering](#ai-reverse-engineering) `21`
   - [Security Skills for Coding Agents](#security-skills-for-coding-agents) `50`
@@ -240,7 +240,7 @@
 ### AI Pentest Agents
 
 > LLM agents and assistants that test web apps, APIs and infrastructure.  
-> **63 tools** · OWASP: — (AI for security; outside the OWASP GenAI landscape)
+> **64 tools** · OWASP: — (AI for security; outside the OWASP GenAI landscape)
 
 | Project | Description | Stars | Last commit |
 | --- | --- | --- | --- |
@@ -274,6 +274,7 @@
 | [**Dark-Moon**](https://github.com/ASCIT31/Dark-Moon) | Open-source autonomous AI penetration testing. 50 specialist agents across web, API, cloud, Active… | [![Stars](https://img.shields.io/github/stars/ASCIT31/Dark-Moon?style=flat&label=%E2%98%85)](https://github.com/ASCIT31/Dark-Moon/stargazers) | [![Last commit](https://img.shields.io/github/last-commit/ASCIT31/Dark-Moon?style=flat&label=)](https://github.com/ASCIT31/Dark-Moon/commits) |
 | [**Cybermes**](https://github.com/Zyrexnn/Cybermes) | Autonomous Offensive Security, Bug Bounty & Red Teaming Agent Framework powered by Hermes Agent… | [![Stars](https://img.shields.io/github/stars/Zyrexnn/Cybermes?style=flat&label=%E2%98%85)](https://github.com/Zyrexnn/Cybermes/stargazers) | [![Last commit](https://img.shields.io/github/last-commit/Zyrexnn/Cybermes?style=flat&label=)](https://github.com/Zyrexnn/Cybermes/commits) |
 | [**Reaper**](https://github.com/ghostsecurity/reaper) | Live validation proxy tool for testing web app vulnerabilities | [![Stars](https://img.shields.io/github/stars/ghostsecurity/reaper?style=flat&label=%E2%98%85)](https://github.com/ghostsecurity/reaper/stargazers) | [![Last commit](https://img.shields.io/github/last-commit/ghostsecurity/reaper?style=flat&label=)](https://github.com/ghostsecurity/reaper/commits) |
+| [**artex-ko**](https://github.com/jiwoochris/artex-ko) | ARTEX 한국어판 · AI 자율 침투 테스트 프레임워크 현지화 (upstream: Autumn-27/ARTEX, AGPL-3.0) | [![Stars](https://img.shields.io/github/stars/jiwoochris/artex-ko?style=flat&label=%E2%98%85)](https://github.com/jiwoochris/artex-ko/stargazers) | [![Last commit](https://img.shields.io/github/last-commit/jiwoochris/artex-ko?style=flat&label=)](https://github.com/jiwoochris/artex-ko/commits) |
 | [**MCP Security Hub**](https://github.com/FuzzingLabs/mcp-security-hub) | A growing collection of MCP servers bringing offensive security tools to AI assistants. Nmap… | [![Stars](https://img.shields.io/github/stars/FuzzingLabs/mcp-security-hub?style=flat&label=%E2%98%85)](https://github.com/FuzzingLabs/mcp-security-hub/stargazers) | [![Last commit](https://img.shields.io/github/last-commit/FuzzingLabs/mcp-security-hub?style=flat&label=)](https://github.com/FuzzingLabs/mcp-security-hub/commits) |
 | [**Cyber-AutoAgent**](https://github.com/westonbrown/Cyber-AutoAgent) 🗄️ | AI agent for autonomous cyber operations | [![Stars](https://img.shields.io/github/stars/westonbrown/Cyber-AutoAgent?style=flat&label=%E2%98%85)](https://github.com/westonbrown/Cyber-AutoAgent/stargazers) | [![Last commit](https://img.shields.io/github/last-commit/westonbrown/Cyber-AutoAgent?style=flat&label=)](https://github.com/westonbrown/Cyber-AutoAgent/commits) |
 | [**Google MCP Security**](https://github.com/google/mcp-security) |  | [![Stars](https://img.shields.io/github/stars/google/mcp-security?style=flat&label=%E2%98%85)](https://github.com/google/mcp-security/stargazers) | [![Last commit](https://img.shields.io/github/last-commit/google/mcp-security?style=flat&label=)](https://github.com/google/mcp-security/commits) |
