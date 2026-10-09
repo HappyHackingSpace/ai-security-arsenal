@@ -120,7 +120,7 @@ def main():
         out += [f"### {c['title']}", "", c["blurb"], "", f"<sub>OWASP: {owasp(c)}</sub>", "",
                 "| Project | Description | Stars | Last commit |",
                 "| --- | --- | --- | --- |"]
-        for r, m in sorted(rows.get(c["key"], []), key=lambda x: x[1]["last_commit"], reverse=True):
+        for r, m in sorted(rows.get(c["key"], []), key=lambda x: (x[1]["stargazers_count"], x[1]["last_commit"]), reverse=True):
             name = r["name"] or m["full_name"].split("/")[1]
             arch = " 🗄️" if m["archived"] else ""
             out.append(f"| [**{name}**](https://github.com/{m['full_name']}){arch} | "
