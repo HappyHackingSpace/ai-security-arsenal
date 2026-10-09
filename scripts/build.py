@@ -96,8 +96,11 @@ def main():
 
     total = sum(map(len, rows.values()))
     groups = list(dict.fromkeys(c["group"] for c in cats))
-    out = ['<div align="center">', "", "# AI Security Arsenal", "",
-           "Open source tools for AI security.<br>", "**Attack AI · Defend AI · Hack with AI**", "",
+    out = ['<div align="center">', "", "<picture>",
+           '  <source media="(prefers-color-scheme: dark)" srcset="assets/banner-dark.svg">',
+           '  <img alt="AI Security Arsenal: open source tools to attack, defend and hack with AI" '
+           'src="assets/banner-light.svg" width="100%">',
+           "</picture>", "",
            " ".join([shield("tools", str(total), "blue", "#contents"),
                      shield("categories", str(len(cats)), "blue", "TEMPLATE.md#categories-fixed"),
                      shield("updated", date.today().isoformat(), "green", "../../commits/main"),
