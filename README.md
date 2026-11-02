@@ -536,3 +536,7 @@
 | [**ToolSword**](https://github.com/Junjie-Ye/ToolSword) | [ACL 2024] ToolSword: Unveiling Safety Issues of Large Language Models in Tool Learning Across… | [![Stars](https://img.shields.io/github/stars/Junjie-Ye/ToolSword?style=flat&label=%E2%98%85)](https://github.com/Junjie-Ye/ToolSword/stargazers) | [![Last commit](https://img.shields.io/github/last-commit/Junjie-Ye/ToolSword?style=flat&label=)](https://github.com/Junjie-Ye/ToolSword/commits) |
 
 <div align="right"><a href="#top">↑ back to top</a></div>
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=HappyHackingSpace/ai-security-arsenal&type=Date)](https://star-history.com/#HappyHackingSpace/ai-security-arsenal&Date)
